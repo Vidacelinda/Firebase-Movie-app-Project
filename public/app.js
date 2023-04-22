@@ -17,22 +17,26 @@ function googleLogin() {
     firebase.auth().signInWithPopup(provider)
     .then(result => {
         const user = result.user;
-        document.write(`Hello ${user.displayName}`);
+        document.write(`Hello dude ${user.displayName}`);
         console.log(user);
     })
     .catch(console.log);
 }
 function emailSignUp() {
+    const fullName = document.getElementById("fullname").value;
     const email = document.getElementById("email").value;
     const password = document.getElementById("password").value;
     firebase.auth().createUserWithEmailAndPassword(email, password)
     .then(result => {
         const user = result.user;
-        document.write(`Hello ${user.displayName}`);
-        console.log(user);
+        let displayName = user.displayName;
+        displayName = fullName;
+        window.location.href = `welcome.html?name=${displayName}`;
+
     })
     .catch(console.log);
-}
+  }
+  
 function emailLogin() {
     const email = document.getElementById("login-email").value;
     const password = document.getElementById("login-password").value;
