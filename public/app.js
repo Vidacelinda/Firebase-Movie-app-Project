@@ -39,7 +39,12 @@ function emailLogin() {
     firebase.auth().signInWithEmailAndPassword(email, password)
     .then(result => {
         const user = result.user;
-        document.write(`Hello ${user.displayName}`);
+        // document.write(`Hello ${user.displayName}`);
+        let displayName = user.displayName;
+        if (!displayName) {
+            displayName = email.split('@')[0] || 'friend';
+        }
+        window.location.href = `welcome.html?name=${displayName}`;
         console.log(user);
     })
     .catch(console.log);
