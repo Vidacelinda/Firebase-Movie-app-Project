@@ -23,16 +23,21 @@ function googleLogin() {
     .catch(console.log);
 }
 function emailSignUp() {
-    const email = document.getElementById("email").value;
-    const password = document.getElementById("password").value;
-    firebase.auth().createUserWithEmailAndPassword(email, password)
-    .then(result => {
-        const user = result.user;
-        document.write(`Hello ${user.displayName}`);
-        console.log(user);
-    })
-    .catch(console.log);
+  const fullName = document.getElementById("fullname").value;
+  const email = document.getElementById("email").value;
+  const password = document.getElementById("password").value;
+  firebase.auth().createUserWithEmailAndPassword(email, password)
+  .then(result => {
+      const user = result.user;
+      return user.updateProfile({ displayName: fullName })
+          .then(() => {
+              document.write(`Hello ${user.displayName}`);
+              console.log(user);
+          });
+  })
+  .catch(console.log);
 }
+
 function emailLogin() {
     const email = document.getElementById("login-email").value;
     const password = document.getElementById("login-password").value;
