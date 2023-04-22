@@ -11,13 +11,29 @@ document.addEventListener("DOMContentLoaded", event => {
     const app = firebase.app();
     console.log(app);
 });
+function showGoogleLogin() {
+  document.getElementById("google-login").style.display = "block";
+  document.getElementById("email-signup").style.display = "none";
+  document.getElementById("email-login").style.display = "none";
+}
+function showEmailSignUp() {
+  document.getElementById("google-login").style.display = "none";
+  document.getElementById("email-signup").style.display = "block";
+  document.getElementById("email-login").style.display = "none";
+}
 
+function showEmailLogin() {
+  document.getElementById("google-login").style.display = "none";
+  document.getElementById("email-signup").style.display = "none";
+  document.getElementById("email-login").style.display = "block";
+}
 function googleLogin() {
     const provider = new firebase.auth.GoogleAuthProvider();
     firebase.auth().signInWithPopup(provider)
     .then(result => {
         const user = result.user;
-        document.write(`Hello ${user.displayName}`);
+        let displayName=user.displayName;
+        window.location.href = `welcome.html?name=${displayName}`;
         console.log(user);
     })
     .catch(console.log);
@@ -28,14 +44,13 @@ function emailSignUp() {
   const password = document.getElementById("password").value;
   firebase.auth().createUserWithEmailAndPassword(email, password)
   .then(result => {
-      const user = result.user;
-      return user.updateProfile({ displayName: fullName })
-          .then(() => {
-              document.write(`Hello ${user.displayName}`);
-              console.log(user);
-          });
-  })
-  .catch(console.log);
+    const user = result.user;
+    let displayName = user.displayName;
+    displayName = fullName;
+    window.location.href = `welcome.html?name=${displayName}`;
+
+})
+.catch(console.log);
 }
 
 function emailLogin() {
@@ -48,4 +63,16 @@ function emailLogin() {
         console.log(user);
     })
     .catch(console.log);
+}
+
+
+function showEmailSignUp() {
+  document.getElementById("email-signup").style.display = "block";
+  document.getElementById("email-login").style.display = "none";
+}
+
+
+function showEmailLogin() {
+  document.getElementById("email-signup").style.display = "none";
+  document.getElementById("email-login").style.display = "block";
 }
