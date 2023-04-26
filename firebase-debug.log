@@ -1,0 +1,192 @@
+[debug] [2023-04-23T02:12:17.228Z] ----------------------------------------------------------------------
+[debug] [2023-04-23T02:12:17.272Z] Command:       /Users/marvencesar/.nvm/versions/node/v19.6.1/bin/node /Users/marvencesar/.nvm/versions/node/v19.6.1/bin/firebase serve
+[debug] [2023-04-23T02:12:17.272Z] CLI Version:   11.27.0
+[debug] [2023-04-23T02:12:17.272Z] Platform:      darwin
+[debug] [2023-04-23T02:12:17.272Z] Node Version:  v19.6.1
+[debug] [2023-04-23T02:12:17.273Z] Time:          Sat Apr 22 2023 22:12:17 GMT-0400 (Eastern Daylight Time)
+[debug] [2023-04-23T02:12:17.273Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2023-04-23T02:12:17.276Z] >>> [apiv2][query] GET https://firebase-public.firebaseio.com/cli.json [none]
+[debug] [2023-04-23T02:12:17.400Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2023-04-23T02:12:17.401Z] > authorizing via signed-in user (cesarmarven@gmail.com)
+[debug] [2023-04-23T02:12:17.401Z] [iam] checking project movie-app-full-stack-1 for permissions ["firebase.projects.get"]
+[debug] [2023-04-23T02:12:17.403Z] > refreshing access token with scopes: []
+[debug] [2023-04-23T02:12:17.404Z] >>> [apiv2][query] POST https://www.googleapis.com/oauth2/v3/token [none]
+[debug] [2023-04-23T02:12:17.405Z] >>> [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[warn] ⚠  Unable to fetch the CLI MOTD and remote config. 
+[debug] [2023-04-23T02:12:17.414Z] Failed to fetch MOTD FirebaseError: Failed to make request to https://firebase-public.firebaseio.com/cli.json
+[debug] [2023-04-23T02:12:17.415Z] [iam] error while checking permissions, command may fail: FirebaseError: Authentication Error: Your credentials are no longer valid. Please run firebase login --reauth
+
+For CI servers and headless environments, generate a new token with firebase login:ci
+[debug] [2023-04-23T02:12:17.416Z] > refreshing access token with scopes: []
+[debug] [2023-04-23T02:12:17.416Z] >>> [apiv2][query] POST https://www.googleapis.com/oauth2/v3/token [none]
+[debug] [2023-04-23T02:12:17.416Z] >>> [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[debug] [2023-04-23T02:12:17.423Z] Authentication Error: Your credentials are no longer valid. Please run firebase login --reauth
+
+For CI servers and headless environments, generate a new token with firebase login:ci
+[debug] [2023-04-23T02:12:17.456Z] FirebaseError: Authentication Error: Your credentials are no longer valid. Please run firebase login --reauth
+
+For CI servers and headless environments, generate a new token with firebase login:ci
+    at invalidCredentialError (/Users/marvencesar/.nvm/versions/node/v19.6.1/lib/node_modules/firebase-tools/lib/auth.js:144:12)
+    at refreshTokens (/Users/marvencesar/.nvm/versions/node/v19.6.1/lib/node_modules/firebase-tools/lib/auth.js:508:15)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async Client.getAccessToken (/Users/marvencesar/.nvm/versions/node/v19.6.1/lib/node_modules/firebase-tools/lib/apiv2.js:149:23)
+    at async Client.addAuthHeader (/Users/marvencesar/.nvm/versions/node/v19.6.1/lib/node_modules/firebase-tools/lib/apiv2.js:140:21)
+    at async Client.request (/Users/marvencesar/.nvm/versions/node/v19.6.1/lib/node_modules/firebase-tools/lib/apiv2.js:96:34)
+    at async getFirebaseProject (/Users/marvencesar/.nvm/versions/node/v19.6.1/lib/node_modules/firebase-tools/lib/management/projects.js:295:21)
+    at async needProjectNumber (/Users/marvencesar/.nvm/versions/node/v19.6.1/lib/node_modules/firebase-tools/lib/projectUtils.js:46:22)
+    at async /Users/marvencesar/.nvm/versions/node/v19.6.1/lib/node_modules/firebase-tools/lib/command.js:214:17
+[error] 
+[error] Error: Failed to get Firebase project movie-app-full-stack-1. Please make sure the project exists and your account has permission to access it.
+[debug] [2023-04-23T02:12:58.386Z] ----------------------------------------------------------------------
+[debug] [2023-04-23T02:12:58.389Z] Command:       /Users/marvencesar/.nvm/versions/node/v19.6.1/bin/node /Users/marvencesar/.nvm/versions/node/v19.6.1/bin/firebase serve
+[debug] [2023-04-23T02:12:58.390Z] CLI Version:   11.27.0
+[debug] [2023-04-23T02:12:58.390Z] Platform:      darwin
+[debug] [2023-04-23T02:12:58.390Z] Node Version:  v19.6.1
+[debug] [2023-04-23T02:12:58.390Z] Time:          Sat Apr 22 2023 22:12:58 GMT-0400 (Eastern Daylight Time)
+[debug] [2023-04-23T02:12:58.390Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2023-04-23T02:12:58.394Z] >>> [apiv2][query] GET https://firebase-public.firebaseio.com/cli.json [none]
+[debug] [2023-04-23T02:12:58.507Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2023-04-23T02:12:58.507Z] > authorizing via signed-in user (cesarmarven@gmail.com)
+[debug] [2023-04-23T02:12:58.507Z] [iam] checking project movie-app-full-stack-1 for permissions ["firebase.projects.get"]
+[debug] [2023-04-23T02:12:58.508Z] > refreshing access token with scopes: []
+[debug] [2023-04-23T02:12:58.509Z] >>> [apiv2][query] POST https://www.googleapis.com/oauth2/v3/token [none]
+[debug] [2023-04-23T02:12:58.509Z] >>> [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[debug] [2023-04-23T02:13:00.817Z] <<< [apiv2][status] POST https://www.googleapis.com/oauth2/v3/token 200
+[debug] [2023-04-23T02:13:00.818Z] <<< [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[debug] [2023-04-23T02:13:00.865Z] >>> [apiv2][query] POST https://cloudresourcemanager.googleapis.com/v1/projects/movie-app-full-stack-1:testIamPermissions [none]
+[debug] [2023-04-23T02:13:00.866Z] >>> [apiv2][(partial)header] POST https://cloudresourcemanager.googleapis.com/v1/projects/movie-app-full-stack-1:testIamPermissions x-goog-quota-user=projects/movie-app-full-stack-1
+[debug] [2023-04-23T02:13:00.866Z] >>> [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/movie-app-full-stack-1:testIamPermissions {"permissions":["firebase.projects.get"]}
+[debug] [2023-04-23T02:13:00.873Z] <<< [apiv2][status] GET https://firebase-public.firebaseio.com/cli.json 200
+[debug] [2023-04-23T02:13:00.873Z] <<< [apiv2][body] GET https://firebase-public.firebaseio.com/cli.json {"cloudBuildErrorAfter":1594252800000,"cloudBuildWarnAfter":1590019200000,"defaultNode10After":1594252800000,"minVersion":"3.0.5","node8DeploysDisabledAfter":1613390400000,"node8RuntimeDisabledAfter":1615809600000,"node8WarnAfter":1600128000000}
+[debug] [2023-04-23T02:13:01.545Z] <<< [apiv2][status] POST https://cloudresourcemanager.googleapis.com/v1/projects/movie-app-full-stack-1:testIamPermissions 200
+[debug] [2023-04-23T02:13:01.545Z] <<< [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/movie-app-full-stack-1:testIamPermissions {"permissions":["firebase.projects.get"]}
+[debug] [2023-04-23T02:13:01.546Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/movie-app-full-stack-1 [none]
+[debug] [2023-04-23T02:13:02.485Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/movie-app-full-stack-1 200
+[debug] [2023-04-23T02:13:02.485Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/movie-app-full-stack-1 {"projectId":"movie-app-full-stack-1","projectNumber":"732289375022","displayName":"MOVIE-APP-FULL-STACK-1","name":"projects/movie-app-full-stack-1","resources":{"hostingSite":"movie-app-full-stack-1","realtimeDatabaseInstance":"movie-app-full-stack-1-default-rtdb"},"state":"ACTIVE","etag":"1_1533d932-9cc0-4757-bb88-48e545a7f3b8"}
+[info] 
+[info] === Serving from '/Users/marvencesar/final-project-Team-9'...
+[info] 
+[debug] [2023-04-23T02:13:02.494Z] >>> [apiv2][query] GET https://firebasehosting.googleapis.com/v1beta1/projects/movie-app-full-stack-1/sites 
+[debug] [2023-04-23T02:13:03.714Z] <<< [apiv2][status] GET https://firebasehosting.googleapis.com/v1beta1/projects/movie-app-full-stack-1/sites 200
+[debug] [2023-04-23T02:13:03.714Z] <<< [apiv2][body] GET https://firebasehosting.googleapis.com/v1beta1/projects/movie-app-full-stack-1/sites {"sites":[{"name":"projects/movie-app-full-stack-1/sites/movie-app-full-stack-1","defaultUrl":"https://movie-app-full-stack-1.web.app","appId":"1:732289375022:web:de388fa799e9021c4c38bf","type":"DEFAULT_SITE"}]}
+[debug] [2023-04-23T02:13:03.715Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/movie-app-full-stack-1/webApps/1:732289375022:web:de388fa799e9021c4c38bf/config [none]
+[debug] [2023-04-23T02:13:04.305Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/movie-app-full-stack-1/webApps/1:732289375022:web:de388fa799e9021c4c38bf/config 200
+[debug] [2023-04-23T02:13:04.306Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/movie-app-full-stack-1/webApps/1:732289375022:web:de388fa799e9021c4c38bf/config {"projectId":"movie-app-full-stack-1","appId":"1:732289375022:web:de388fa799e9021c4c38bf","databaseURL":"https://movie-app-full-stack-1-default-rtdb.firebaseio.com","storageBucket":"movie-app-full-stack-1.appspot.com","apiKey":"AIzaSyD052QaAfvdf9sdLExCn3d7ijdGNROPUAc","authDomain":"movie-app-full-stack-1.firebaseapp.com","messagingSenderId":"732289375022","measurementId":"G-GK807470HK"}
+[debug] [2023-04-23T02:13:04.331Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/movie-app-full-stack-1 [none]
+[debug] [2023-04-23T02:13:04.784Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/movie-app-full-stack-1 200
+[debug] [2023-04-23T02:13:04.784Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/movie-app-full-stack-1 {"projectId":"movie-app-full-stack-1","projectNumber":"732289375022","displayName":"MOVIE-APP-FULL-STACK-1","name":"projects/movie-app-full-stack-1","resources":{"hostingSite":"movie-app-full-stack-1","realtimeDatabaseInstance":"movie-app-full-stack-1-default-rtdb"},"state":"ACTIVE","etag":"1_1533d932-9cc0-4757-bb88-48e545a7f3b8"}
+[info] i  hosting[movie-app-full-stack-1]: Serving hosting files from: public {"metadata":{"emulator":{"name":"hosting"},"message":"Serving hosting files from: \u001b[1mpublic\u001b[22m"}}
+[info] ✔  hosting[movie-app-full-stack-1]: Local server: http://localhost:5002 {"metadata":{"emulator":{"name":"hosting"},"message":"Local server: \u001b[4m\u001b[1mhttp://localhost:5002\u001b[22m\u001b[24m"}}
+[info] i  hosting: ::1 - - [23/Apr/2023:02:13:18 +0000] "GET / HTTP/1.1" 200 - "-" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/112.0.0.0 Safari/537.36" {"metadata":{"emulator":{"name":"hosting"},"message":"::1 - - [23/Apr/2023:02:13:18 +0000] \"GET / HTTP/1.1\" 200 - \"-\" \"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/112.0.0.0 Safari/537.36\""}}
+[debug] [2023-04-23T02:13:18.876Z] >>> [apiv2][query] GET https://www.gstatic.com/firebasejs/9.19.1/firebase-auth-compat.js [none]
+[debug] [2023-04-23T02:13:18.881Z] >>> [apiv2][query] GET https://www.gstatic.com/firebasejs/9.19.1/firebase-database-compat.js [none]
+[debug] [2023-04-23T02:13:18.885Z] >>> [apiv2][query] GET https://www.gstatic.com/firebasejs/9.19.1/firebase-firestore-compat.js [none]
+[info] i  hosting: ::1 - - [23/Apr/2023:02:13:18 +0000] "GET /styles.css HTTP/1.1" 200 923 "http://localhost:5002/" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/112.0.0.0 Safari/537.36" {"metadata":{"emulator":{"name":"hosting"},"message":"::1 - - [23/Apr/2023:02:13:18 +0000] \"GET /styles.css HTTP/1.1\" 200 923 \"http://localhost:5002/\" \"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/112.0.0.0 Safari/537.36\""}}
+[info] i  hosting: ::1 - - [23/Apr/2023:02:13:18 +0000] "GET /app.js HTTP/1.1" 200 - "http://localhost:5002/" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/112.0.0.0 Safari/537.36" {"metadata":{"emulator":{"name":"hosting"},"message":"::1 - - [23/Apr/2023:02:13:18 +0000] \"GET /app.js HTTP/1.1\" 200 - \"http://localhost:5002/\" \"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/112.0.0.0 Safari/537.36\""}}
+[debug] [2023-04-23T02:13:19.434Z] <<< [apiv2][status] GET https://www.gstatic.com/firebasejs/9.19.1/firebase-auth-compat.js 200
+[debug] [2023-04-23T02:13:19.434Z] <<< [apiv2][body] GET https://www.gstatic.com/firebasejs/9.19.1/firebase-auth-compat.js [stream]
+[info] i  hosting: ::1 - - [23/Apr/2023:02:13:19 +0000] "GET /__/firebase/9.19.1/firebase-auth-compat.js HTTP/1.1" 200 36397 "http://localhost:5002/" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/112.0.0.0 Safari/537.36" {"metadata":{"emulator":{"name":"hosting"},"message":"::1 - - [23/Apr/2023:02:13:19 +0000] \"GET /__/firebase/9.19.1/firebase-auth-compat.js HTTP/1.1\" 200 36397 \"http://localhost:5002/\" \"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/112.0.0.0 Safari/537.36\""}}
+[debug] [2023-04-23T02:13:19.599Z] <<< [apiv2][status] GET https://www.gstatic.com/firebasejs/9.19.1/firebase-firestore-compat.js 200
+[debug] [2023-04-23T02:13:19.599Z] <<< [apiv2][body] GET https://www.gstatic.com/firebasejs/9.19.1/firebase-firestore-compat.js [stream]
+[debug] [2023-04-23T02:13:19.755Z] <<< [apiv2][status] GET https://www.gstatic.com/firebasejs/9.19.1/firebase-database-compat.js 200
+[debug] [2023-04-23T02:13:19.755Z] <<< [apiv2][body] GET https://www.gstatic.com/firebasejs/9.19.1/firebase-database-compat.js [stream]
+[info] i  hosting: ::1 - - [23/Apr/2023:02:13:19 +0000] "GET /__/firebase/9.19.1/firebase-firestore-compat.js HTTP/1.1" 200 95863 "http://localhost:5002/" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/112.0.0.0 Safari/537.36" {"metadata":{"emulator":{"name":"hosting"},"message":"::1 - - [23/Apr/2023:02:13:19 +0000] \"GET /__/firebase/9.19.1/firebase-firestore-compat.js HTTP/1.1\" 200 95863 \"http://localhost:5002/\" \"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/112.0.0.0 Safari/537.36\""}}
+[info] i  hosting: ::1 - - [23/Apr/2023:02:13:19 +0000] "GET /__/firebase/9.19.1/firebase-database-compat.js HTTP/1.1" 200 47924 "http://localhost:5002/" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/112.0.0.0 Safari/537.36" {"metadata":{"emulator":{"name":"hosting"},"message":"::1 - - [23/Apr/2023:02:13:19 +0000] \"GET /__/firebase/9.19.1/firebase-database-compat.js HTTP/1.1\" 200 47924 \"http://localhost:5002/\" \"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/112.0.0.0 Safari/537.36\""}}
+[info] i  hosting: ::1 - - [23/Apr/2023:02:13:20 +0000] "GET /favicon.ico HTTP/1.1" 404 628 "http://localhost:5002/" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/112.0.0.0 Safari/537.36" {"metadata":{"emulator":{"name":"hosting"},"message":"::1 - - [23/Apr/2023:02:13:20 +0000] \"GET /favicon.ico HTTP/1.1\" 404 628 \"http://localhost:5002/\" \"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/112.0.0.0 Safari/537.36\""}}
+[info] i  hosting: ::1 - - [23/Apr/2023:02:14:48 +0000] "GET /welcome.html?name=Luis%20Rendon HTTP/1.1" 200 436 "http://localhost:5002/" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/112.0.0.0 Safari/537.36" {"metadata":{"emulator":{"name":"hosting"},"message":"::1 - - [23/Apr/2023:02:14:48 +0000] \"GET /welcome.html?name=Luis%20Rendon HTTP/1.1\" 200 436 \"http://localhost:5002/\" \"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/112.0.0.0 Safari/537.36\""}}
+[debug] [2023-04-24T18:09:22.146Z] ----------------------------------------------------------------------
+[debug] [2023-04-24T18:09:22.159Z] Command:       /Users/marvencesar/.nvm/versions/node/v19.6.1/bin/node /Users/marvencesar/.nvm/versions/node/v19.6.1/bin/firebase serve
+[debug] [2023-04-24T18:09:22.160Z] CLI Version:   11.27.0
+[debug] [2023-04-24T18:09:22.160Z] Platform:      darwin
+[debug] [2023-04-24T18:09:22.160Z] Node Version:  v19.6.1
+[debug] [2023-04-24T18:09:22.160Z] Time:          Mon Apr 24 2023 14:09:22 GMT-0400 (Eastern Daylight Time)
+[debug] [2023-04-24T18:09:22.160Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2023-04-24T18:09:22.164Z] >>> [apiv2][query] GET https://firebase-public.firebaseio.com/cli.json [none]
+[debug] [2023-04-24T18:09:22.277Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2023-04-24T18:09:22.277Z] > authorizing via signed-in user (cesarmarven@gmail.com)
+[debug] [2023-04-24T18:09:22.277Z] [iam] checking project movie-app-full-stack-1 for permissions ["firebase.projects.get"]
+[debug] [2023-04-24T18:09:22.278Z] > refreshing access token with scopes: []
+[debug] [2023-04-24T18:09:22.279Z] >>> [apiv2][query] POST https://www.googleapis.com/oauth2/v3/token [none]
+[debug] [2023-04-24T18:09:22.279Z] >>> [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[debug] [2023-04-24T18:09:23.962Z] <<< [apiv2][status] POST https://www.googleapis.com/oauth2/v3/token 200
+[debug] [2023-04-24T18:09:23.962Z] <<< [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[debug] [2023-04-24T18:09:24.013Z] >>> [apiv2][query] POST https://cloudresourcemanager.googleapis.com/v1/projects/movie-app-full-stack-1:testIamPermissions [none]
+[debug] [2023-04-24T18:09:24.014Z] >>> [apiv2][(partial)header] POST https://cloudresourcemanager.googleapis.com/v1/projects/movie-app-full-stack-1:testIamPermissions x-goog-quota-user=projects/movie-app-full-stack-1
+[debug] [2023-04-24T18:09:24.014Z] >>> [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/movie-app-full-stack-1:testIamPermissions {"permissions":["firebase.projects.get"]}
+[debug] [2023-04-24T18:09:24.019Z] <<< [apiv2][status] GET https://firebase-public.firebaseio.com/cli.json 200
+[debug] [2023-04-24T18:09:24.019Z] <<< [apiv2][body] GET https://firebase-public.firebaseio.com/cli.json {"cloudBuildErrorAfter":1594252800000,"cloudBuildWarnAfter":1590019200000,"defaultNode10After":1594252800000,"minVersion":"3.0.5","node8DeploysDisabledAfter":1613390400000,"node8RuntimeDisabledAfter":1615809600000,"node8WarnAfter":1600128000000}
+[debug] [2023-04-24T18:09:24.375Z] <<< [apiv2][status] POST https://cloudresourcemanager.googleapis.com/v1/projects/movie-app-full-stack-1:testIamPermissions 200
+[debug] [2023-04-24T18:09:24.375Z] <<< [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/movie-app-full-stack-1:testIamPermissions {"permissions":["firebase.projects.get"]}
+[debug] [2023-04-24T18:09:24.376Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/movie-app-full-stack-1 [none]
+[debug] [2023-04-24T18:09:24.845Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/movie-app-full-stack-1 200
+[debug] [2023-04-24T18:09:24.846Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/movie-app-full-stack-1 {"projectId":"movie-app-full-stack-1","projectNumber":"732289375022","displayName":"MOVIE-APP-FULL-STACK-1","name":"projects/movie-app-full-stack-1","resources":{"hostingSite":"movie-app-full-stack-1","realtimeDatabaseInstance":"movie-app-full-stack-1-default-rtdb"},"state":"ACTIVE","etag":"1_6c9da5c3-dc24-4cc4-b590-6cdf89c4fb7a"}
+[info] 
+[info] === Serving from '/Users/marvencesar/final-project-Team-9'...
+[info] 
+[debug] [2023-04-24T18:09:24.855Z] >>> [apiv2][query] GET https://firebasehosting.googleapis.com/v1beta1/projects/movie-app-full-stack-1/sites 
+[debug] [2023-04-24T18:09:25.494Z] <<< [apiv2][status] GET https://firebasehosting.googleapis.com/v1beta1/projects/movie-app-full-stack-1/sites 200
+[debug] [2023-04-24T18:09:25.494Z] <<< [apiv2][body] GET https://firebasehosting.googleapis.com/v1beta1/projects/movie-app-full-stack-1/sites {"sites":[{"name":"projects/movie-app-full-stack-1/sites/movie-app-full-stack-1","defaultUrl":"https://movie-app-full-stack-1.web.app","appId":"1:732289375022:web:de388fa799e9021c4c38bf","type":"DEFAULT_SITE"}]}
+[debug] [2023-04-24T18:09:25.495Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/movie-app-full-stack-1/webApps/1:732289375022:web:de388fa799e9021c4c38bf/config [none]
+[debug] [2023-04-24T18:09:26.017Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/movie-app-full-stack-1/webApps/1:732289375022:web:de388fa799e9021c4c38bf/config 200
+[debug] [2023-04-24T18:09:26.017Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/movie-app-full-stack-1/webApps/1:732289375022:web:de388fa799e9021c4c38bf/config {"projectId":"movie-app-full-stack-1","appId":"1:732289375022:web:de388fa799e9021c4c38bf","databaseURL":"https://movie-app-full-stack-1-default-rtdb.firebaseio.com","storageBucket":"movie-app-full-stack-1.appspot.com","apiKey":"AIzaSyD052QaAfvdf9sdLExCn3d7ijdGNROPUAc","authDomain":"movie-app-full-stack-1.firebaseapp.com","messagingSenderId":"732289375022","measurementId":"G-GK807470HK"}
+[debug] [2023-04-24T18:09:26.045Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/movie-app-full-stack-1 [none]
+[debug] [2023-04-24T18:09:26.281Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/movie-app-full-stack-1 200
+[debug] [2023-04-24T18:09:26.281Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/movie-app-full-stack-1 {"projectId":"movie-app-full-stack-1","projectNumber":"732289375022","displayName":"MOVIE-APP-FULL-STACK-1","name":"projects/movie-app-full-stack-1","resources":{"hostingSite":"movie-app-full-stack-1","realtimeDatabaseInstance":"movie-app-full-stack-1-default-rtdb"},"state":"ACTIVE","etag":"1_6c9da5c3-dc24-4cc4-b590-6cdf89c4fb7a"}
+[info] i  hosting[movie-app-full-stack-1]: Serving hosting files from: public {"metadata":{"emulator":{"name":"hosting"},"message":"Serving hosting files from: \u001b[1mpublic\u001b[22m"}}
+[info] ✔  hosting[movie-app-full-stack-1]: Local server: http://localhost:5002 {"metadata":{"emulator":{"name":"hosting"},"message":"Local server: \u001b[4m\u001b[1mhttp://localhost:5002\u001b[22m\u001b[24m"}}
+[info] i  hosting: ::1 - - [24/Apr/2023:18:09:35 +0000] "GET / HTTP/1.1" 200 - "-" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.3 Safari/605.1.15" {"metadata":{"emulator":{"name":"hosting"},"message":"::1 - - [24/Apr/2023:18:09:35 +0000] \"GET / HTTP/1.1\" 200 - \"-\" \"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.3 Safari/605.1.15\""}}
+[info] i  hosting: ::1 - - [24/Apr/2023:18:09:35 +0000] "GET /app.js HTTP/1.1" 200 - "http://localhost:5002/" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.3 Safari/605.1.15" {"metadata":{"emulator":{"name":"hosting"},"message":"::1 - - [24/Apr/2023:18:09:35 +0000] \"GET /app.js HTTP/1.1\" 200 - \"http://localhost:5002/\" \"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.3 Safari/605.1.15\""}}
+[info] i  hosting: ::1 - - [24/Apr/2023:18:09:35 +0000] "GET /styles.css HTTP/1.1" 200 923 "http://localhost:5002/" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.3 Safari/605.1.15" {"metadata":{"emulator":{"name":"hosting"},"message":"::1 - - [24/Apr/2023:18:09:35 +0000] \"GET /styles.css HTTP/1.1\" 200 923 \"http://localhost:5002/\" \"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.3 Safari/605.1.15\""}}
+[debug] [2023-04-26T17:42:22.574Z] ----------------------------------------------------------------------
+[debug] [2023-04-26T17:42:22.580Z] Command:       /Users/marvencesar/.nvm/versions/node/v19.6.1/bin/node /Users/marvencesar/.nvm/versions/node/v19.6.1/bin/firebase serve
+[debug] [2023-04-26T17:42:22.581Z] CLI Version:   11.27.0
+[debug] [2023-04-26T17:42:22.581Z] Platform:      darwin
+[debug] [2023-04-26T17:42:22.581Z] Node Version:  v19.6.1
+[debug] [2023-04-26T17:42:22.581Z] Time:          Wed Apr 26 2023 13:42:22 GMT-0400 (Eastern Daylight Time)
+[debug] [2023-04-26T17:42:22.581Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2023-04-26T17:42:22.690Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2023-04-26T17:42:22.691Z] > authorizing via signed-in user (cesarmarven@gmail.com)
+[debug] [2023-04-26T17:42:22.691Z] [iam] checking project movie-app-full-stack-1 for permissions ["firebase.projects.get"]
+[debug] [2023-04-26T17:42:22.692Z] > refreshing access token with scopes: []
+[debug] [2023-04-26T17:42:22.693Z] >>> [apiv2][query] POST https://www.googleapis.com/oauth2/v3/token [none]
+[debug] [2023-04-26T17:42:22.693Z] >>> [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[debug] [2023-04-26T17:42:24.586Z] <<< [apiv2][status] POST https://www.googleapis.com/oauth2/v3/token 200
+[debug] [2023-04-26T17:42:24.586Z] <<< [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[debug] [2023-04-26T17:42:24.633Z] >>> [apiv2][query] POST https://cloudresourcemanager.googleapis.com/v1/projects/movie-app-full-stack-1:testIamPermissions [none]
+[debug] [2023-04-26T17:42:24.634Z] >>> [apiv2][(partial)header] POST https://cloudresourcemanager.googleapis.com/v1/projects/movie-app-full-stack-1:testIamPermissions x-goog-quota-user=projects/movie-app-full-stack-1
+[debug] [2023-04-26T17:42:24.635Z] >>> [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/movie-app-full-stack-1:testIamPermissions {"permissions":["firebase.projects.get"]}
+[debug] [2023-04-26T17:42:24.884Z] <<< [apiv2][status] POST https://cloudresourcemanager.googleapis.com/v1/projects/movie-app-full-stack-1:testIamPermissions 200
+[debug] [2023-04-26T17:42:24.884Z] <<< [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/movie-app-full-stack-1:testIamPermissions {"permissions":["firebase.projects.get"]}
+[debug] [2023-04-26T17:42:24.885Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/movie-app-full-stack-1 [none]
+[debug] [2023-04-26T17:42:25.145Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/movie-app-full-stack-1 200
+[debug] [2023-04-26T17:42:25.145Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/movie-app-full-stack-1 {"projectId":"movie-app-full-stack-1","projectNumber":"732289375022","displayName":"MOVIE-APP-FULL-STACK-1","name":"projects/movie-app-full-stack-1","resources":{"hostingSite":"movie-app-full-stack-1","realtimeDatabaseInstance":"movie-app-full-stack-1-default-rtdb"},"state":"ACTIVE","etag":"1_a9a43479-6f9a-46f0-a9cc-bf070a4ff17e"}
+[info] 
+[info] === Serving from '/Users/marvencesar/final-project-Team-9'...
+[info] 
+[debug] [2023-04-26T17:42:25.153Z] >>> [apiv2][query] GET https://firebasehosting.googleapis.com/v1beta1/projects/movie-app-full-stack-1/sites 
+[debug] [2023-04-26T17:42:25.748Z] <<< [apiv2][status] GET https://firebasehosting.googleapis.com/v1beta1/projects/movie-app-full-stack-1/sites 200
+[debug] [2023-04-26T17:42:25.748Z] <<< [apiv2][body] GET https://firebasehosting.googleapis.com/v1beta1/projects/movie-app-full-stack-1/sites {"sites":[{"name":"projects/movie-app-full-stack-1/sites/movie-app-full-stack-1","defaultUrl":"https://movie-app-full-stack-1.web.app","appId":"1:732289375022:web:de388fa799e9021c4c38bf","type":"DEFAULT_SITE"}]}
+[debug] [2023-04-26T17:42:25.749Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/movie-app-full-stack-1/webApps/1:732289375022:web:de388fa799e9021c4c38bf/config [none]
+[debug] [2023-04-26T17:42:26.257Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/movie-app-full-stack-1/webApps/1:732289375022:web:de388fa799e9021c4c38bf/config 200
+[debug] [2023-04-26T17:42:26.257Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/movie-app-full-stack-1/webApps/1:732289375022:web:de388fa799e9021c4c38bf/config {"projectId":"movie-app-full-stack-1","appId":"1:732289375022:web:de388fa799e9021c4c38bf","databaseURL":"https://movie-app-full-stack-1-default-rtdb.firebaseio.com","storageBucket":"movie-app-full-stack-1.appspot.com","apiKey":"AIzaSyD052QaAfvdf9sdLExCn3d7ijdGNROPUAc","authDomain":"movie-app-full-stack-1.firebaseapp.com","messagingSenderId":"732289375022","measurementId":"G-GK807470HK"}
+[debug] [2023-04-26T17:42:26.282Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/movie-app-full-stack-1 [none]
+[debug] [2023-04-26T17:42:26.566Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/movie-app-full-stack-1 200
+[debug] [2023-04-26T17:42:26.567Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/movie-app-full-stack-1 {"projectId":"movie-app-full-stack-1","projectNumber":"732289375022","displayName":"MOVIE-APP-FULL-STACK-1","name":"projects/movie-app-full-stack-1","resources":{"hostingSite":"movie-app-full-stack-1","realtimeDatabaseInstance":"movie-app-full-stack-1-default-rtdb"},"state":"ACTIVE","etag":"1_a9a43479-6f9a-46f0-a9cc-bf070a4ff17e"}
+[info] i  hosting[movie-app-full-stack-1]: Serving hosting files from: public {"metadata":{"emulator":{"name":"hosting"},"message":"Serving hosting files from: \u001b[1mpublic\u001b[22m"}}
+[info] ✔  hosting[movie-app-full-stack-1]: Local server: http://localhost:5002 {"metadata":{"emulator":{"name":"hosting"},"message":"Local server: \u001b[4m\u001b[1mhttp://localhost:5002\u001b[22m\u001b[24m"}}
+[info] i  hosting: ::1 - - [26/Apr/2023:17:45:16 +0000] "GET / HTTP/1.1" 200 - "-" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/112.0.0.0 Safari/537.36" {"metadata":{"emulator":{"name":"hosting"},"message":"::1 - - [26/Apr/2023:17:45:16 +0000] \"GET / HTTP/1.1\" 200 - \"-\" \"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/112.0.0.0 Safari/537.36\""}}
+[info] i  hosting: ::1 - - [26/Apr/2023:17:45:16 +0000] "GET /styles.css HTTP/1.1" 200 923 "http://localhost:5002/" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/112.0.0.0 Safari/537.36" {"metadata":{"emulator":{"name":"hosting"},"message":"::1 - - [26/Apr/2023:17:45:16 +0000] \"GET /styles.css HTTP/1.1\" 200 923 \"http://localhost:5002/\" \"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/112.0.0.0 Safari/537.36\""}}
+[info] i  hosting: ::1 - - [26/Apr/2023:17:45:16 +0000] "GET /app.js HTTP/1.1" 200 - "http://localhost:5002/" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/112.0.0.0 Safari/537.36" {"metadata":{"emulator":{"name":"hosting"},"message":"::1 - - [26/Apr/2023:17:45:16 +0000] \"GET /app.js HTTP/1.1\" 200 - \"http://localhost:5002/\" \"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/112.0.0.0 Safari/537.36\""}}
+[info] i  hosting: ::1 - - [26/Apr/2023:17:45:16 +0000] "GET /favicon.ico HTTP/1.1" 404 628 "http://localhost:5002/" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/112.0.0.0 Safari/537.36" {"metadata":{"emulator":{"name":"hosting"},"message":"::1 - - [26/Apr/2023:17:45:16 +0000] \"GET /favicon.ico HTTP/1.1\" 404 628 \"http://localhost:5002/\" \"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/112.0.0.0 Safari/537.36\""}}
+[info] i  hosting: ::1 - - [26/Apr/2023:17:45:45 +0000] "GET / HTTP/1.1" 200 - "-" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/112.0.0.0 Safari/537.36" {"metadata":{"emulator":{"name":"hosting"},"message":"::1 - - [26/Apr/2023:17:45:45 +0000] \"GET / HTTP/1.1\" 200 - \"-\" \"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/112.0.0.0 Safari/537.36\""}}
+[info] i  hosting: ::1 - - [26/Apr/2023:17:47:28 +0000] "GET / HTTP/1.1" 200 - "-" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/112.0.0.0 Safari/537.36" {"metadata":{"emulator":{"name":"hosting"},"message":"::1 - - [26/Apr/2023:17:47:28 +0000] \"GET / HTTP/1.1\" 200 - \"-\" \"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/112.0.0.0 Safari/537.36\""}}
+[info] i  hosting: ::1 - - [26/Apr/2023:17:47:28 +0000] "GET /app.js HTTP/1.1" 200 - "http://localhost:5002/" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/112.0.0.0 Safari/537.36" {"metadata":{"emulator":{"name":"hosting"},"message":"::1 - - [26/Apr/2023:17:47:28 +0000] \"GET /app.js HTTP/1.1\" 200 - \"http://localhost:5002/\" \"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/112.0.0.0 Safari/537.36\""}}
+[info] i  hosting: ::1 - - [26/Apr/2023:17:47:59 +0000] "GET /app.js HTTP/1.1" 200 - "http://localhost:5002/" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/112.0.0.0 Safari/537.36" {"metadata":{"emulator":{"name":"hosting"},"message":"::1 - - [26/Apr/2023:17:47:59 +0000] \"GET /app.js HTTP/1.1\" 200 - \"http://localhost:5002/\" \"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/112.0.0.0 Safari/537.36\""}}
+[info] i  hosting: ::1 - - [26/Apr/2023:17:49:36 +0000] "GET / HTTP/1.1" 200 - "-" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/112.0.0.0 Safari/537.36" {"metadata":{"emulator":{"name":"hosting"},"message":"::1 - - [26/Apr/2023:17:49:36 +0000] \"GET / HTTP/1.1\" 200 - \"-\" \"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/112.0.0.0 Safari/537.36\""}}
+[info] i  hosting: ::1 - - [26/Apr/2023:17:49:36 +0000] "GET /app.js HTTP/1.1" 200 - "http://localhost:5002/" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/112.0.0.0 Safari/537.36" {"metadata":{"emulator":{"name":"hosting"},"message":"::1 - - [26/Apr/2023:17:49:36 +0000] \"GET /app.js HTTP/1.1\" 200 - \"http://localhost:5002/\" \"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/112.0.0.0 Safari/537.36\""}}
+[info] i  hosting: ::1 - - [26/Apr/2023:17:50:34 +0000] "GET / HTTP/1.1" 200 - "-" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/112.0.0.0 Safari/537.36" {"metadata":{"emulator":{"name":"hosting"},"message":"::1 - - [26/Apr/2023:17:50:34 +0000] \"GET / HTTP/1.1\" 200 - \"-\" \"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/112.0.0.0 Safari/537.36\""}}
+[info] i  hosting: ::1 - - [26/Apr/2023:17:50:34 +0000] "GET /app.js HTTP/1.1" 200 - "http://localhost:5002/" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/112.0.0.0 Safari/537.36" {"metadata":{"emulator":{"name":"hosting"},"message":"::1 - - [26/Apr/2023:17:50:34 +0000] \"GET /app.js HTTP/1.1\" 200 - \"http://localhost:5002/\" \"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/112.0.0.0 Safari/537.36\""}}
