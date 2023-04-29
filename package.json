@@ -6,10 +6,10 @@
   "dependencies": {
     "ansi-regex": "^5.0.1",
     "ansi-styles": "^4.3.0",
-    "bootstrap": "^5.2.3",
     "cliui": "^7.0.4",
     "color-convert": "^2.0.1",
     "color-name": "^1.1.4",
+    "cors": "^2.8.5",
     "dialog-polyfill": "^0.4.10",
     "emoji-regex": "^8.0.0",
     "escalade": "^3.1.1",
