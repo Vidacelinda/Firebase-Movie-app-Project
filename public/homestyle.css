@@ -87,3 +87,33 @@ body, h1, h2, h3, p, ul {
     width: 100%;
   }
   
+  /* home page image
+  .poster-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50%;
+    margin: 0 auto;
+  }
+
+  .poster-container img {
+    max-width: 100%;
+    height: auto;
+  }
+  .poster-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 50%;
+  margin: 0 auto;
+  }
+
+  .poster-container img {
+    max-width: 100%;
+    height: auto;
+  }
+  .movie-scroll-container {
+    width: 100%;
+    overflow-x: scroll;
+    white-space: nowrap;
+  } */
