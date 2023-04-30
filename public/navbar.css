@@ -16,3 +16,38 @@
 .nav-link:hover {
     color: #ccc;
 }
+
+.header-text {
+    color: #ffffff; /* Change this to the color you want */
+}
+
+.header-text:hover {
+    color:#ccc /* Change this to the color you want */
+}
+.search-container {
+    display: flex;
+    align-items: center;
+}
+
+.search-input {
+    margin-left: 10px;
+    width: 300px; /* Adjust the search bar width */
+    height: 40px; /* Adjust the search bar height */
+    font-size: 18px; /* Adjust the font size */
+    padding: 5px 10px; /* Add padding around the text */
+    border: 2px solid #ffffff; /* Add a border */
+    border-radius: 5px; /* Add rounded corners */
+    outline: none; /* Remove the default outline */
+    transition: 0.3s; /* Add a smooth transition effect */
+}
+
+.search-input:focus {
+    border-color: #3A98FF; /* Change the border color when focused */
+}
+
+footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
