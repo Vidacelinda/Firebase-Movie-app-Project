@@ -3,6 +3,7 @@
 <head>
 	<title>Movie Search</title>
 	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="api-keys.js"></script> <!-- include the file with the API key -->
 	<style>
 		.container {
 			margin: 20px;
@@ -58,7 +59,7 @@
 
 	<script>
 		function searchMovies() {
-			const apiKey = "2f1775072b783326efa2a8d064dfeb34"; // replace with your actual API key
+			const apiKey = MOVIE_DB_API_KEY; // replace with your actual API key
 			const query = document.getElementById("search").value;
 			const url = `https://api.themoviedb.org/3/search/movie?api_key=${apiKey}&query=${query}`;
 			$.get(url, function(data) {
