@@ -3,7 +3,7 @@
 <head>
 	<title>Movie Search</title>
 	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="api-keys.js"></script> <!-- include the file with the API key -->
+
 	<style>
 		.container {
 			margin: 20px;
@@ -59,18 +59,15 @@
 
 	<script>
 		function searchMovies() {
-			const apiKey = MOVIE_DB_API_KEY; // replace with your actual API key
-			const query = document.getElementById("search").value;
-			const url = `https://api.themoviedb.org/3/search/movie?api_key=${apiKey}&query=${query}`;
+			const url = `http://localhost:3000/movies?query=${document.getElementById("search").value}`;
 			$.get(url, function(data) {
-				if (data.results.length > 0) {
-					const movie = data.results[0];
-					document.getElementById("poster").src = `https://image.tmdb.org/t/p/w500${movie.poster_path}`;
-					document.getElementById("title").innerHTML = movie.title;
-					document.getElementById("overview").innerHTML = movie.overview;
-					document.getElementById("release").innerHTML = `Release date: ${movie.release_date}`;
+				if (data.error) {
+					alert(data.error);
 				} else {
-					alert("No movie found.");
+					document.getElementById("poster").src = data.poster_path;
+                    document.getElementById("title").innerHTML = data.title;
+                    document.getElementById("overview").innerHTML = data.overview;
+                    document.getElementById("release").innerHTML = data.release_date;
 				}
 			});
 		}
