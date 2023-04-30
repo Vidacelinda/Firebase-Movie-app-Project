@@ -73,9 +73,37 @@
                     document.getElementById("title").innerHTML = data.title;
                     document.getElementById("overview").innerHTML = data.overview;
                     document.getElementById("release").innerHTML = data.release_date;
+
+                    // Remove any existing favorite button before appending a new one
+                    const existingButton = document.getElementById("favorite-button");
+                    if (existingButton) {
+                        existingButton.remove();
+                    }
+
+                    // Create a new button element
+                    const favoriteButton = document.createElement("button");
+                    favoriteButton.innerHTML = "Add to Favorites";
+                    favoriteButton.id = "favorite-button";
+
+                    // Add an event listener to the button that stores the name of the movie
+                    favoriteButton.addEventListener("click", function() {
+                        const movieName = data.title;
+                        storeFavoriteMovie(movieName);
+                    });
+
+                    // Pass the name of the movie to the function using a data attribute
+                    favoriteButton.setAttribute("data-movie-name", data.title);
+
+                    // Add the button element to the page
+                    document.querySelector(".poster").appendChild(favoriteButton);
 				}
 			});
 		}
+        function storeFavoriteMovie(movieName) {
+            // Call your function to store the name of the movie here
+            // somehow store info in a collection : future 
+            console.log(`Adding ${movieName} to favorites!`);
+        }
 	</script>
 
 <script src="loadnavbar.js"></script>
