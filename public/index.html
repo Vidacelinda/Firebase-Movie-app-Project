@@ -3,54 +3,70 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Welcome to Firebase Hosting</title>
+    <title>Movie APP</title>
 
-    <!-- update the version number as needed -->
-    <script defer src="/__/firebase/9.19.1/firebase-app-compat.js"></script>
+
     <!-- include only the Firebase features as you need -->
-    <script defer src="/__/firebase/9.19.1/firebase-auth-compat.js"></script>
-    <script defer src="/__/firebase/9.19.1/firebase-database-compat.js"></script>
-    <script defer src="/__/firebase/9.19.1/firebase-firestore-compat.js"></script>
-    <script defer src="/__/firebase/9.19.1/firebase-functions-compat.js"></script>
-    <script defer src="/__/firebase/9.19.1/firebase-messaging-compat.js"></script>
-    <script defer src="/__/firebase/9.19.1/firebase-storage-compat.js"></script>
-    <script defer src="/__/firebase/9.19.1/firebase-analytics-compat.js"></script>
-    <script defer src="/__/firebase/9.19.1/firebase-remote-config-compat.js"></script>
-    <script defer src="/__/firebase/9.19.1/firebase-performance-compat.js"></script>
-    <!-- 
-      initialize the SDK after all desired features are loaded, set useEmulator to false
-      to avoid connecting the SDK to running emulators.
-    -->
-    <script defer src="/__/firebase/init.js?useEmulator=true"></script>
+    <script src="/__/firebase/9.19.1/firebase-app-compat.js"></script>
+    <script src="/__/firebase/9.19.1/firebase-auth-compat.js"></script>
+    <script src="/__/firebase/9.19.1/firebase-database-compat.js"></script>
+    <script src="/__/firebase/9.19.1/firebase-firestore-compat.js"></script>
+    <script src="/__/firebase/9.19.1/firebase-functions-compat.js"></script>
+    <script src="/__/firebase/9.19.1/firebase-messaging-compat.js"></script>
+    <script src="/__/firebase/9.19.1/firebase-storage-compat.js"></script>
+    <script src="/__/firebase/9.19.1/firebase-analytics-compat.js"></script>
+    <script src="/__/firebase/9.19.1/firebase-remote-config-compat.js"></script>
+    <script src="/__/firebase/9.19.1/firebase-performance-compat.js"></script>
 
- 
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="navbar.css">
+    <script src="app.js"></script>
   </head>
   <body>
-    <h2>Login with Google</h2>
-    <button onclick="googleLogin()">Login with Google</button>
+    <div id="navbar"></div>
+    <div class="centered-container">
+      <h1>The Movie APP</h1>
+      <button onclick="googleLogin()">Login with Google</button>
+      <button onclick="showEmailLogin()">Login with Email and Password</button>
+      <button onclick="showEmailSignUp()">Sign up with Email and Password</button>
+    
 
-    <h2>Sign up with Email and Password</h2>
-    <form onsubmit="emailSignUp(); return false;">
-      <label for="email">Email</label>
-      <input type="email" id="email" name="email" required>
-      <br>
-      <label for="password">Password</label>
-      <input type="password" id="password" name="password" required>
-      <br>
-      <button type="submit">Sign up</button>
-    </form>
+      <div id="email-signup" class="form-container" style="display: none;">
+        <!-- Email sign-up form -->
+        <h2>Sign up with Email and Password</h2>
+        <form onsubmit="emailSignUp(); return false;">
+          <label for="fullname">Full Name</label>
+          <input type="text" id="fullname" name="fullname" required>
+          <br>
+          
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email" required>
+          <br>
+          <label for="password">Password</label>
+          <input type="password" id="password" name="password" required>
+          <br>
+          <button type="submit">Sign up</button>
+        </form>
+      </div>
 
-    <h2>Login with Email and Password</h2>
-    <form onsubmit="emailLogin(); return false;">
-      <label for="login-email">Email</label>
-      <input type="email" id="login-email" name="login-email" required>
-      <br>
-      <label for="login-password">Password</label>
-      <input type="password" id="login-password" name="login-password" required>
-      <br>
-      <button type="submit">Login</button>
-    </form>
-
-    <script src="app.js"></script>
+      <div id="email-login" class="form-container" style="display: none;">
+        <!-- Email login form -->
+        <h2>Login with Email and Password</h2>
+        <form onsubmit="emailLogin(); return false;">
+          <label for="login-email">Email</label>
+          <input type="email" id="login-email" name="login-email" required>
+          <br>
+          <label for="login-password">Password</label>
+          <input type="password" id="login-password" name="login-password" required>
+          <br>
+          <button type="submit">Login</button>
+        </form>
+      </div>
+    </div>
+    <script src="loadnavbar.js"></script>
+    <footer>
+      <p>&copy; 2023 The Movie APP. All rights reserved.</p>
+  </footer>
+    
   </body>
 </html>
