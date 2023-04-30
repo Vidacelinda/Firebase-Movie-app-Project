@@ -2,9 +2,13 @@
 var admin = require("firebase-admin");
 const verifyToken = require('./middlewares/verifyToken');
 
+const { API_KEY } = require("./config.js");
+const Url = `https://api.themoviedb.org/3/movie/top_rated?api_key=${API_KEY}&language=en-US&page=1`;
+
 var cred = require("./credentials.json");
 const request = require('request');
-
+// including fetch for home top 5 movies api request 
+const fetch = require('node-fetch');
 
 admin.initializeApp({
   credential: admin.credential.cert(cred)
@@ -37,11 +41,12 @@ app.use((err, req, res, next) => {
   res.status(500).send('Internal Server Error again');
 });
 
+//search funcitonality 
 app.get('/movies', (req, res) => {
-  const apiKey = '2f1775072b783326efa2a8d064dfeb34'; // replace with your actual API key
+  
   const query = req.query.query;
 
-  const url = `https://api.themoviedb.org/3/search/movie?api_key=${apiKey}&query=${query}`;
+  const url = `https://api.themoviedb.org/3/search/movie?api_key=${API_KEY}&query=${query}`;
 
   request(url, (error, response, body) => {
     if (!error && response.statusCode === 200) {
@@ -62,6 +67,20 @@ app.get('/movies', (req, res) => {
       res.status(response.statusCode).send(error.message);
     }
   });
+});
+
+
+//top 5 movies on home page 
+app.get('/api/top-rated-movies', async (req, res) => {
+  try {
+    const response = await fetch(Url);
+    const data = await response.json();
+    const movies = data.results.slice(0, 5);
+    res.send(movies);
+  } catch (error) {
+    console.error(error);
+    res.status(500).send('Internal server error');
+  }
 });
 
 

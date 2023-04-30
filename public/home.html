@@ -11,23 +11,36 @@
 <body>
         <div id="navbar"></div>
    
-        <h1>Featured Movies</h1>
-        <div class="grid-container">
-            <div class="movie">
-                <img src="movie1.jpg" alt="Movie 1">
-                <div class="movie-info">
-                    <h3>Movie 1</h3>
-                    <p>Movie 1 description...</p>
-                </div>
-            </div>
-            <div class="movie">
-                <img src="movie2.jpg" alt="Movie 2">
-                <div class="movie-info">
-                    <h3>Movie 2</h3>
-                    <p>Movie 2 description...</p>
-                </div>
-            </div>
-            <!-- Add more movie items here -->
+        <h1>Top 5 Rated Movies</h1>
+         <div id="poster-container">
+            <script>
+                // API endpoint to retrieve top 5 rated movies
+              
+          
+                // Function to retrieve data from API and render poster images
+                 async function renderPosterImages() {
+                    try {
+                        const response = await fetch('http://localhost:3000/api/top-rated-movies');
+                        const movies = await response.json();
+
+                        const posterContainer = document.getElementById("poster-container");
+                        movies.forEach(movie => {
+                        const img = document.createElement("img");
+                        img.src = `https://image.tmdb.org/t/p/w500${movie.poster_path}`;
+                        posterContainer.appendChild(img);
+                        });
+                    } catch (error) {
+                        console.error(error);
+                    }
+                    }
+
+
+          
+                // Call the function to render the poster images
+                renderPosterImages();
+
+                
+              </script>
         </div>
         <script src="loadnavbar.js"></script>
     <footer>
