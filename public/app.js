@@ -83,12 +83,12 @@ async function googleLogin() {
   firebase.auth().signInWithPopup(provider)
   .then(async (result) => {
     const user = result.user;
-    document.write(`Hello ${user.displayName}`);
     console.log(user);
     const idToken = await user.getIdToken();
     await validateToken(idToken);
+    window.location.href = `home.html`;
   })
-  .catch(console.log);
+  
 }
 
 async function emailSignUp() {
@@ -104,7 +104,7 @@ async function emailSignUp() {
       displayName: fullName,
       
     });
-    window.location.href = `welcome.html?name=${fullName}`;
+    window.location.href = 'home.html'
 })
 .catch(console.log);
 }
@@ -118,9 +118,22 @@ async function emailLogin() {
       const user = result.user;
       const idToken = await user.getIdToken();
       await validateToken(idToken);
-      const fullName = user.displayName;
-      window.location.href = `welcome.html?name=${fullName}`;
+      window.location.href = `home.html`;
     })
-    .catch(console.log);
+    
+   
   }
-
+  async function signOut() {
+    document.getElementById("sign-out").addEventListener("click", async () => {
+      try {
+        // Sign out the current user.
+        await firebase.auth().signOut();
+  
+        // Redirect the user to the homepage.
+        window.location.href = "home.html";
+        console.log("Successfully Signed Out");
+      } catch (error) {
+        console.error(error);
+      }
+    });
+  }
