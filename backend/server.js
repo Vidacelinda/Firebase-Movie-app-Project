@@ -40,11 +40,12 @@ app.use((err, req, res, next) => {
   console.error(err.stack);
   res.status(500).send('Internal Server Error again');
 });
+app.use(express.static('public'));
 
 //search funcitonality 
 app.get('/movies', (req, res) => {
   
-  const query = req.query.query;
+  const query = req.query.query; 
 
   const url = `https://api.themoviedb.org/3/search/movie?api_key=${API_KEY}&query=${query}&page=1&include_adult=false`;
 

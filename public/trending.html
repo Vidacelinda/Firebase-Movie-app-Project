@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Movie Website</title>
+    <link rel="stylesheet" href="navbar.css">
+    <link rel="stylesheet" href="homestyle.css">
+    <style>
+        /* poster */
+        #poster-container img {
+        width: 210px;
+        margin: 0 10px;
+        }
+        /* scroller */
+        .movie-scroll-container {
+        width: 100%;
+        overflow-x: scroll;
+        white-space: nowrap;
+        margin:10px;
+        background-color: #333333;
+        }
+        /* bar scrolling color*/
+        .movie-scroll-container::-webkit-scrollbar {
+        width: 8px;
+        height: 8px;
+        }
+        .movie-scroll-container::-webkit-scrollbar-track {
+        background-color: #333333;
+        }
+        .movie-scroll-container::-webkit-scrollbar-thumb {
+        background-color: #555555;
+        border-radius: 8px;
+        }
+    </style>
+</head>
+<body>
+        <div id="navbar"></div>
+    
+        <script src="loadnavbar.js"></script>
+
+        <!-- TOP RATED -->
+        <h1>Trending Movies</h1>
+        <div class="movie-scroll-container">
+            <div id="poster-container"></div>
+        </div>
+    
+        <script>
+            // API endpoint to retrieve top 5 rated movies
+            const apiUrl = 'https://api.themoviedb.org/3/trending/all/day?api_key=2f1775072b783326efa2a8d064dfeb34&language=en-US&page=1';
+        
+            // Function to retrieve data from API and render poster images
+            async function renderPosterImages() {
+                try {
+                const response = await fetch(apiUrl);
+                const data = await response.json();
+                const movies = data.results.slice(0, 7);
+        
+                // Create an image element for each movie poster and append it to the container
+                const posterContainer = document.getElementById("poster-container");
+                movies.forEach(movie => {
+                    const img = document.createElement("img");
+                    img.src = `https://image.tmdb.org/t/p/w500${movie.poster_path}`;
+                    img.alt = movie.title;
+                    img.title = movie.title + ': ' + movie.overview;
+                    posterContainer.appendChild(img);
+                });
+                } catch (error) {
+                console.error(error);
+                }
+            }
+        
+            // Call the function to render the poster images
+            renderPosterImages();
+        </script>
+
+    <footer>
+        <p>&copy; 2023 The Movie APP. All rights reserved.</p>
+    </footer>
+</body>
+</html>
