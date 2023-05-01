@@ -1,4 +1,4 @@
-let currentUser;
+let currentLog;
 function showGoogleLogin() {
   document.getElementById("google-login").style.display = "block";
   document.getElementById("email-signup").style.display = "none";
@@ -83,8 +83,8 @@ async function googleLogin() {
   firebase.auth().signInWithPopup(provider)
   .then(async (result) => {
     const user = result.user;
+    currentLog = user;
     document.write(`Hello ${user.displayName}`);
-    console.log(`Hello ${user.displayName}`);
     console.log(user);
     const idToken = await user.getIdToken();
     await validateToken(idToken);
@@ -129,7 +129,6 @@ async function emailLogin() {
     .catch(console.log);
   }
 
-
   // async function signOut() {
   //   try {
   //     await firebase.auth().signOut();
@@ -145,6 +144,7 @@ async function emailLogin() {
    // console.log(fullName);
     firebase.auth().signOut().then(() => {
       // Sign-out successful.
+      document.write(`Goodbye ${currentLog}`);
       console.log("User signed out successfully");
      // console.log(fullName);
       alert("You have signed out successfully");

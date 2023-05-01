@@ -3,7 +3,7 @@ var admin = require("firebase-admin");
 const verifyToken = require('./middlewares/verifyToken');
 
 const { API_KEY } = require("./config.js");
-
+// const firebase = require("firebase");
 
 var cred = require("./credentials.json");
 const request = require('request');
@@ -40,6 +40,8 @@ app.use((err, req, res, next) => {
   console.error(err.stack);
   res.status(500).send('Internal Server Error again');
 });
+
+
 
 //search funcitonality 
 app.get('/movies', (req, res) => {

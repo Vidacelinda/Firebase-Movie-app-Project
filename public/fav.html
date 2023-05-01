@@ -34,36 +34,23 @@
     };
     firebase.initializeApp(firebaseConfig);
 
-       // Get a reference to the Firestore database
-       const db = firebase.firestore();
-      
-      // Get a reference to the 'fav' document in the 'favList' collection
-      const myFav = db.collection('favList').doc('fav');
-      
-      // Update the 'movieName' field in the 'fav' document with a new value
-      function updateMovieName() {
-        const movieNameInput = document.getElementById('movieNameInput');
-        const newMovieName = movieNameInput.value;
-        
-        myFav.update({
-          movieName: newMovieName
-        })
-        .then(() => {
-          console.log('Movie name updated successfully!');
-        })
-        .catch((error) => {
-          console.error('Error updating movie name:', error);
-        });
+    // Retrieve movieName from Firestore
+    const db = firebase.firestore();
+    const myFav = db.collection('favList').doc('fav');
+    myFav.get().then(doc => {
+      if (doc.exists) {
+        const data = doc.data();
+        const movieName = data.movieName;
+
+        // Update h1 element with movieName
+        const h1 = document.getElementById('movieName');
+        h1.textContent = movieName;
+      } else {
+        console.log("No such document!");
       }
-    </script>
-  </head>
-  <body>
-    <h1>Update Movie Name</h1>
-    <label for="movieNameInput">Enter new movie name:</label>
-    <input type="text" id="movieNameInput">
-    <button onclick="updateMovieName()">Update Movie Name</button>
-  </body>
+    }).catch(error => {
+      console.log("Error getting document:", error);
+    });
+  </script>
+</body>
 </html>
-
-
-
