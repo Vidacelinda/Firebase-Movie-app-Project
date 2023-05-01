@@ -39,7 +39,9 @@ document.addEventListener("DOMContentLoaded", event => {
     measurementId: "G-GK807470HK"
   });
   const app = firebase.app();
+
   console.log(app);
+
 });
 
 async function getIdToken() {
@@ -124,16 +126,29 @@ async function emailLogin() {
    
   }
   async function signOut() {
-    document.getElementById("sign-out").addEventListener("click", async () => {
-      try {
-        // Sign out the current user.
-        await firebase.auth().signOut();
-  
-        // Redirect the user to the homepage.
-        window.location.href = "home.html";
-        console.log("Successfully Signed Out");
-      } catch (error) {
-        console.error(error);
-      }
-    });
+    try {
+      await firebase.auth().signOut();
+      console.log("User signed out successfully");
+      // Redirect to the login page or perform any other action after signing out
+      window.location.href = 'index.html';
+    } catch (error) {
+      console.error("Error signing out:", error);
+    }
   }
+  
+  // Assign the signOut function to the window object
+  window.signOut = signOut;
+
+  function addSignOutListener() {
+    const signOutBtn = document.getElementById("sign-out-btn");
+  
+    if (signOutBtn) {
+      signOutBtn.addEventListener("click", async () => {
+        await signOut();
+      });
+    }
+  }
+  
+  document.addEventListener("DOMContentLoaded", () => {
+    addSignOutListener();
+  });
