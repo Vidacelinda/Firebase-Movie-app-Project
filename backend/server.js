@@ -3,7 +3,7 @@ var admin = require("firebase-admin");
 const verifyToken = require('./middlewares/verifyToken');
 
 const { API_KEY } = require("./config.js");
-
+// const firebase = require("firebase");
 
 var cred = require("./credentials.json");
 const request = require('request');
@@ -40,6 +40,37 @@ app.use((err, req, res, next) => {
   console.error(err.stack);
   res.status(500).send('Internal Server Error again');
 });
+
+
+// const firebaseConfig = {
+//   apiKey: "AIzaSyD052QaAfvdf9sdLExCn3d7ijdGNROPUAc",
+//   authDomain: "movie-app-full-stack-1.firebaseapp.com",
+//   databaseURL: "https://movie-app-full-stack-1-default-rtdb.firebaseio.com",
+//   projectId: "movie-app-full-stack-1",
+//   storageBucket: "movie-app-full-stack-1.appspot.com",
+//   messagingSenderId: "732289375022",
+//   appId: "1:732289375022:web:de388fa799e9021c4c38bf",
+//   measurementId: "G-GK807470HK"
+// };
+// firebase.initializeApp(firebaseConfig);
+
+// // Retrieve movieName from Firestore
+// const db = firebase.firestore();
+// const myFav = db.collection('favList').doc('fav');
+// myFav.get().then(doc => {
+// if (doc.exists) {
+//   const data = doc.data();
+//   const movieName = data.movieName;
+
+//   // Update h1 element with movieName
+//   const a = document.getElementById('movieName');
+//   a.textContent = movieName;
+// } else {
+//   console.log("No such document!");
+// }
+// }).catch(error => {
+// console.log("Error getting document:", error);
+// });
 
 //search funcitonality 
 app.get('/movies', (req, res) => {

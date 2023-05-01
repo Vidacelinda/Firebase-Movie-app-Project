@@ -7,7 +7,19 @@
 	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <link rel="stylesheet" href="navbar.css">
     <link rel="stylesheet" href="homestyle.css">
-
+    <script src="/__/firebase/9.19.1/firebase-app-compat.js"></script>
+    <script src="/__/firebase/9.19.1/firebase-auth-compat.js"></script>
+    <!-- database  -->
+    <script src="/__/firebase/9.19.1/firebase-database-compat.js"></script>
+    <script src="/__/firebase/9.19.1/firebase-firestore-compat.js"></script>
+    <!--  DB-->
+    <script src="/__/firebase/9.19.1/firebase-functions-compat.js"></script>
+    <script src="/__/firebase/9.19.1/firebase-messaging-compat.js"></script>
+    <script src="/__/firebase/9.19.1/firebase-storage-compat.js"></script>
+    <script src="/__/firebase/9.19.1/firebase-analytics-compat.js"></script>
+    <script src="/__/firebase/9.19.1/firebase-remote-config-compat.js"></script>
+    <script src="/__/firebase/9.19.1/firebase-performance-compat.js"></script>
+    <!-- <script src="app.js"></script> -->
 	<style>
 		.container {
 			margin: 20px;
@@ -63,47 +75,79 @@
 	</div>
 
 	<script>
-		function searchMovies() {
-			const url = `http://localhost:3000/movies?query=${document.getElementById("search").value}`;
-			$.get(url, function(data) {
-				if (data.error) {
-					alert(data.error);
-				} else {
-					document.getElementById("poster").src = data.poster_path;
-                    document.getElementById("title").innerHTML = data.title;
-                    document.getElementById("overview").innerHTML = data.overview;
-                    document.getElementById("release").innerHTML = data.release_date;
 
-                    // Remove any existing favorite button before appending a new one
-                    const existingButton = document.getElementById("favorite-button");
-                    if (existingButton) {
-                        existingButton.remove();
-                    }
+       // Initialize Firebase
+    const firebaseConfig = {
+        apiKey: "AIzaSyD052QaAfvdf9sdLExCn3d7ijdGNROPUAc",
+        authDomain: "movie-app-full-stack-1.firebaseapp.com",
+        databaseURL: "https://movie-app-full-stack-1-default-rtdb.firebaseio.com",
+        projectId: "movie-app-full-stack-1",
+        storageBucket: "movie-app-full-stack-1.appspot.com",
+        messagingSenderId: "732289375022",
+        appId: "1:732289375022:web:de388fa799e9021c4c38bf",
+        measurementId: "G-GK807470HK"
+    };
+    firebase.initializeApp(firebaseConfig);
 
-                    // Create a new button element
-                    const favoriteButton = document.createElement("button");
-                    favoriteButton.innerHTML = "Add to Favorites";
-                    favoriteButton.id = "favorite-button";
+    // Get a reference to the Firestore database
+    const db = firebase.firestore();
 
-                    // Add an event listener to the button that stores the name of the movie
-                    favoriteButton.addEventListener("click", function() {
-                        const movieName = data.title;
-                        storeFavoriteMovie(movieName);
-                    });
+    // Get a reference to the 'fav' document in the 'favList' collection
+    const myFav = db.collection('favList').doc('fav');
 
-                    // Pass the name of the movie to the function using a data attribute
-                    favoriteButton.setAttribute("data-movie-name", data.title);
+    function addMovie(movieName) {
+        myFav.update({
+            movieName: firebase.firestore.FieldValue.arrayUnion(movieName)
+        })
+        .then(() => {
+            console.log('New movie added successfully!');
+        })
+        .catch((error) => {
+            console.error('Error adding new movie:', error);
+        });
+    }
 
-                    // Add the button element to the page
-                    document.querySelector(".poster").appendChild(favoriteButton);
-				}
-			});
-		}
-        function storeFavoriteMovie(movieName) {
-            // Call your function to store the name of the movie here
-            // somehow store info in a collection : future 
-            console.log(`Adding ${movieName} to favorites!`);
-        }
+    function storeFavoriteMovie(movieName) {
+        addMovie(movieName);
+        console.log(`Adding ${movieName} to favorites!`);
+    }
+
+    function searchMovies() {
+        const url = `http://localhost:3000/movies?query=${document.getElementById("search").value}`;
+        $.get(url, function(data) {
+            if (data.error) {
+                alert(data.error);
+            } else {
+                document.getElementById("poster").src = data.poster_path;
+                document.getElementById("title").innerHTML = data.title;
+                document.getElementById("overview").innerHTML = data.overview;
+                document.getElementById("release").innerHTML = data.release_date;
+
+                // Remove any existing favorite button before appending a new one
+                const existingButton = document.getElementById("favorite-button");
+                if (existingButton) {
+                    existingButton.remove();
+                }
+
+                // Create a new button element
+                const favoriteButton = document.createElement("button");
+                favoriteButton.innerHTML = "Add to Favorites";
+                favoriteButton.id = "favorite-button";
+
+                // Add an event listener to the button that stores the name of the movie
+                favoriteButton.addEventListener("click", function() {
+                    const movieName = data.title;
+                    storeFavoriteMovie(movieName);
+                });
+
+                // Pass the name of the movie to the function using a data attribute
+                favoriteButton.setAttribute("data-movie-name", data.title);
+
+                // Add the button element to the page
+                document.querySelector(".poster").appendChild(favoriteButton);
+            }
+        });
+    }
 	</script>
 
 <script src="loadnavbar.js"></script>
