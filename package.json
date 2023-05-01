@@ -31,6 +31,7 @@
     "safe-buffer": "^5.2.1",
     "string-width": "^4.2.3",
     "strip-ansi": "^6.0.1",
+    "swagger-jsdoc": "^6.2.8",
     "tr46": "^0.0.3",
     "tslib": "^2.5.0",
     "webidl-conversions": "^3.0.1",
@@ -54,5 +55,8 @@
   "bugs": {
     "url": "https://github.com/cop4808-spring-2023-fullstack-web/final-project-Team-9/issues"
   },
-  "homepage": "https://github.com/cop4808-spring-2023-fullstack-web/final-project-Team-9#readme"
+  "homepage": "https://github.com/cop4808-spring-2023-fullstack-web/final-project-Team-9#readme",
+  "devDependencies": {
+    "swagger-ui-dist": "^4.18.3"
+  }
 }
