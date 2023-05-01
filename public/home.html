@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <title>My Movie Website</title>
     <link rel="stylesheet" href="navbar.css">
     <link rel="stylesheet" href="homestyle.css">
@@ -32,7 +33,9 @@
         background-color: #555555;
         border-radius: 8px;
         }
+        
     </style>
+     <!-- <script src="api-keys.js"></script> -->
 </head>
 <body>
         <div id="navbar"></div>
@@ -40,38 +43,26 @@
         <script src="loadnavbar.js"></script>
 
         <!-- TOP RATED -->
-        <h1>Top 5 Rated Movies</h1>
+        <h1>Top Rated Movies</h1>
         <div class="movie-scroll-container">
-            <div id="poster-container"></div>
+            <div id="movie-posters"></div>
         </div>
-    
+       
         <script>
             // API endpoint to retrieve top 5 rated movies
-            const apiUrl = 'https://api.themoviedb.org/3/movie/top_rated?api_key=2f1775072b783326efa2a8d064dfeb34&language=en-US&page=1';
-        
             // Function to retrieve data from API and render poster images
-            async function renderPosterImages() {
-                try {
-                const response = await fetch(apiUrl);
-                const data = await response.json();
-                const movies = data.results.slice(0, 7);
-        
-                // Create an image element for each movie poster and append it to the container
-                const posterContainer = document.getElementById("poster-container");
-                movies.forEach(movie => {
-                    const img = document.createElement("img");
-                    img.src = `https://image.tmdb.org/t/p/w500${movie.poster_path}`;
-                    img.alt = movie.title;
-                    img.title = movie.title + ': ' + movie.overview;
-                    posterContainer.appendChild(img);
-                });
-                } catch (error) {
-                console.error(error);
+            $.getJSON('http://localhost:3000/movie', function(data) {
+                var movies = data.results;
+                //Render posters of first 5 movies
+                for (var i = 0; i < 7; i++) {
+                    var poster_url = "https://image.tmdb.org/t/p/w185" + movies[i].poster_path;
+                    var poster = "<img src='" + poster_url + "'>";
+                    $("#movie-posters").append(poster);
                 }
-            }
+                });
         
-            // Call the function to render the poster images
-            renderPosterImages();
+            
+
         </script>
 
     <footer>

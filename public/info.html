@@ -3,10 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <!-- <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> -->
     <title>My Movie Website</title>
     <link rel="stylesheet" href="navbar.css">
     <link rel="stylesheet" href="homestyle.css">
+    <link rel="stylesheet" href="info.css">
     <style>
         /* poster */
         #poster-container img {
@@ -39,36 +40,14 @@
 </head>
 <body>
         <div id="navbar"></div>
-    
         <script src="loadnavbar.js"></script>
 
-        <!-- TOP RATED -->
-        <h1>Trending Movies</h1>
-        <div class="movie-scroll-container">
-            <div id="movie-posters"></div>
+        <div class="container">
+            <p>The Movie App is a web application that allows users to search for movies, view movie details, and manage their favorite movies. 
+            Users can log in using their Google account or sign up with an email and password.
+            The app uses the Firebase platform for authentication and data storage. 
+            The application uses The Movie Database API to fetch movie data and Firebase Firestore to store the user's favorite movies.</p>
         </div>
-       
-        <script>
-            // API endpoint to retrieve top 5 rated movies
-            // Function to retrieve data from API and render poster images
-            $.get('http://localhost:3000/movietrending', function(data) {
-			for (var i = 0; i < 5; i++) {
-				// Get the movie poster path and construct the full image URL
-				var posterPath = data.results[i].poster_path;
-				var imageUrl = "https://image.tmdb.org/t/p/w500" + posterPath;
-				// Create an image element for the movie poster and set its source
-				var img = document.createElement("img");
-				img.src = imageUrl;
-				img.alt = data.results[i].title;
-				img.className = "movie-poster";
-				// Add the image element to the container
-				document.getElementById("movie-posters").appendChild(img);
-			}
-		});
-        
-            
-
-        </script>
 
     <footer>
         <p>&copy; 2023 The Movie APP. All rights reserved.</p>

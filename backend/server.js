@@ -30,7 +30,6 @@ const corsOptions = {
 
 app.use(cors(corsOptions));
 app.use(express.json()); // To parse JSON request bodies
-
 // Swagger Annotation for the `/protected` endpoint
 /**
  * @swagger
@@ -108,7 +107,6 @@ app.use((err, req, res, next) => {
  *       500:
  *         description: Internal server error occurred
  */
-
 app.get('/movies', (req, res) => {
   
   const query = req.query.query;
@@ -139,86 +137,161 @@ app.get('/movies', (req, res) => {
 
 /**
  * @swagger
- * /api/top-rated-movies:
+ * /movie:
  *   get:
- *     summary: Get top rated movies
- *     description: Retrieve a list of top rated movies.
- *     responses:
- *       200:
- *         description: A list of top rated movies.
- *         content:
- *           application/json:
- *             schema:
- *               type: array
- *               items:
- *                 type: object
- *                 properties:
- *                   title:
- *                     type: string
- *                     description: The title of the movie.
- *                   overview:
- *                     type: string
- *                     description: A brief overview of the movie.
- *                   release_date:
- *                     type: string
- *                     description: The release date of the movie.
- *                   poster_path:
- *                     type: string
- *                     description: The URL of the poster image for the movie.
+ *     summary: Get the list of top-rated movies from The Movie Database API
+ *     description: Retrieve a list of movies that are currently rated as the highest by The Movie Database API. The list is sorted by rating in descending order.
  *     produces:
  *       - application/json
+ *     responses:
+ *       200:
+ *         description: Successfully retrieved the list of top-rated movies
+ *         schema:
+ *           type: object
+ *           properties:
+ *             results:
+ *               type: array
+ *               items:
+ *                 $ref: '#/definitions/Movie'
+ *           required:
+ *             - results
+ *       500:
+ *         description: An error occurred while processing the request
+ *         schema:
+ *           type: object
+ *           properties:
+ *             message:
+ *               type: string
+ *           required:
+ *             - message
+ * definitions:
+ *   Movie:
+ *     type: object
+ *     properties:
+ *       id:
+ *         type: integer
+ *         example: 550
+ *       title:
+ *         type: string
+ *         example: Fight Club
+ *       overview:
+ *         type: string
+ *         example: A ticking-time-bomb insomniac and a slippery soap salesman channel primal male aggression into a shocking new form of therapy. 
+ *       poster_path:
+ *         type: string
+ *         example: /pB8BM7pdSp6B6Ih7QZ4DrQ3PmJK.jpg
+ *       vote_average:
+ *         type: number
+ *         example: 8.4
+ *       release_date:
+ *         type: string
+ *         example: 1999-10-12
+ *     required:
+ *       - id
+ *       - title
+ *       - overview
+ *       - poster_path
+ *       - vote_average
+ *       - release_date
  */
 
-app.get('/api/top-rated-movies', async (req, res) => {
-  const Url = `https://api.themoviedb.org/3/movie/top_rated?api_key=${API_KEY}&language=en-US&page=1`;
-  try {
-    const response = await fetch(Url);
-    const data = await response.json();
-    const movies = data.results.slice(0, 7);
-    res.send(movies);
-  } catch (error) {
-    console.error(error);
-    res.status(500).send('Internal server error');
-  }
+app.get('/movie', (req, res) => {
+  const Url = `https://api.themoviedb.org/3/movie/top_rated?api_key=${API_KEY}`;
+    request(Url, (error, response, body) => {
+        if (error) {
+            console.error(error);
+            res.status(500).send('An error occurred');
+        } else {
+            res.send(body);
+        }
+    });
 });
 
 /**
  * @swagger
- * /api/trending:
+ * /movietrending:
  *   get:
- *     summary: Returns the list of trending movies and TV shows.
- *     description: Retrieves the top 7 movies and TV shows that are currently trending, based on the number of views within the last 24 hours.
+ *     summary: Get the list of trending movies and TV shows from The Movie Database API
+ *     description: Retrieve a list of movies and TV shows that are currently trending on The Movie Database API, sorted by popularity in the last 24 hours.
+ *     produces:
+ *       - application/json
  *     responses:
  *       200:
- *         description: A list of trending movies and TV shows.
- *         content:
- *           application/json:
- *             schema:
+ *         description: Successfully retrieved the list of trending movies and TV shows
+ *         schema:
+ *           type: object
+ *           properties:
+ *             results:
  *               type: array
  *               items:
- *                 $ref: '#/components/schemas/Movie'
- *                 $ref: '#/components/schemas/TVShow'
+ *                 $ref: '#/definitions/MovieTrending'
+ *           required:
+ *             - results
  *       500:
- *         description: Internal server error.
+ *         description: An error occurred while processing the request
+ *         schema:
+ *           type: object
+ *           properties:
+ *             message:
+ *               type: string
+ *           required:
+ *             - message
+ * definitions:
+ *   MovieTrending:
+ *     type: object
+ *     properties:
+ *       id:
+ *         type: integer
+ *         example: 497698
+ *       title:
+ *         type: string
+ *         example: Black Widow
+ *       overview:
+ *         type: string
+ *         example: Natasha Romanoff, also known as Black Widow, confronts the darker parts of her ledger when a dangerous conspiracy with ties to her past arises.
+ *       poster_path:
+ *         type: string
+ *         example: /qAZ0pzat24kLdO3o8ejmbLxyOac.jpg
+ *       vote_average:
+ *         type: number
+ *         example: 7.8
+ *       release_date:
+ *         type: string
+ *         example: 2021-07-07
+ *     required:
+ *       - id
+ *       - title
+ *       - overview
+ *       - poster_path
+ *       - vote_average
+ *       - release_date
  */
 
-app.get('/api/trending', async (req, res) => {
-  const Url = `https://api.themoviedb.org/3/movie/trending/all/day?api_key=${API_KEY}&language=en-US&page=1`;
+app.get('/movietrending', async (req, res) => {
+  const url = `https://api.themoviedb.org/3/trending/all/day?api_key=${API_KEY}&language=en-US&page=1`;
   try {
-    const response = await fetch(Url);
+    const response = await fetch(url);
     const data = await response.json();
-    const movies = data.results.slice(0, 7);
-    res.send(movies);
+    res.json(data);
   } catch (error) {
     console.error(error);
     res.status(500).send('Internal server error');
   }
 });
 
-const swaggerDocument = require('./api/swagger/swagger.json');
-const swaggerUi = require('swagger-ui-express');
+// app.get('/api/trending', async (req, res) => {
+//   const Url = `https://api.themoviedb.org/3/movie/trending/all/day?api_key=${API_KEY}&language=en-US&page=1`;
+//   try {
+//     const response = await fetch(Url);
+//     const data = await response.json();
+//     const movies = data.results.slice(0, 7);
+//     res.send(movies);
+//   } catch (error) {
+//     console.error(error);
+//     res.status(500).send('Internal server error');
+//   }
+// });
 
-app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
