@@ -123,4 +123,3 @@ async function emailLogin() {
     })
     .catch(console.log);
   }
-
