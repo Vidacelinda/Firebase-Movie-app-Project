@@ -54,7 +54,7 @@
                 try {
                 const response = await fetch(apiUrl);
                 const data = await response.json();
-                const movies = data.results.slice(0, 5);
+                const movies = data.results.slice(0, 7);
         
                 // Create an image element for each movie poster and append it to the container
                 const posterContainer = document.getElementById("poster-container");
