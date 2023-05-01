@@ -86,13 +86,6 @@ app.get('/api/top-rated-movies', async (req, res) => {
   }
 });
 
-
-const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => {
-  console.log(`Server is running on port http://localhost:${PORT}`);
-});
-
-
 //trending
 app.get('/api/trending', async (req, res) => {
   const Url = `https://api.themoviedb.org/3/movie/trending/all/day?api_key=${API_KEY}&language=en-US&page=1`;
@@ -106,3 +99,11 @@ app.get('/api/trending', async (req, res) => {
     res.status(500).send('Internal server error');
   }
 });
+
+
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => {
+  console.log(`Server is running on port http://localhost:${PORT}`);
+});
+
+
