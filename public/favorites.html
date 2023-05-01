@@ -35,28 +35,28 @@
 
         
             <div>
-            <table>
-                <thead>
-                  <tr>
-                    <th>Movie Poster</th>
-                    <th>Movie Name</th>
-                    <th>Action</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td><img src="path/to/movie-poster.jpg" alt="Movie Poster"></td>
-                    <td><a id="movieName" href="https://www.example.com/movie"></a></td>
-                    <td><button>Delete</button></td>
-                  </tr>
-                  <tr>
-                    <td><img src="path/to/another-movie-poster.jpg" alt="Another Movie Poster"></td>
-                    <td><a href="https://www.example.com/another-movie">Another Movie Name</a></td>
-                    <td><button>Delete</button></td>
-                  </tr>
-                 
-                </tbody>
-              </table>
+                <table id="favTable">
+                    <thead>
+                      <tr>
+                        <th>Movie Poster</th>
+                        <th>Movie Name</th>
+                        <th>Action</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td><img src="path/to/movie-poster.jpg" alt="Movie Poster"></td>
+                        <td><a id="movieName" href="https://www.example.com/movie"></a></td>
+                        <td><button>Delete</button></td>
+                      </tr>
+                      <tr>
+                        <td><img src="path/to/another-movie-poster.jpg" alt="Another Movie Poster"></td>
+                        <td><a href="https://www.example.com/another-movie">Another Movie Name</a></td>
+                        <td><button>Delete</button></td>
+                      </tr>
+                     
+                    </tbody>
+                  </table>
               </div>
            
         <script src="loadnavbar.js"></script>
@@ -67,36 +67,49 @@
 
     <!-- DATA BASE  -->
     <script>
-      // Initialize Firebase
-      const firebaseConfig = {
-          apiKey: "AIzaSyD052QaAfvdf9sdLExCn3d7ijdGNROPUAc",
-          authDomain: "movie-app-full-stack-1.firebaseapp.com",
-          databaseURL: "https://movie-app-full-stack-1-default-rtdb.firebaseio.com",
-          projectId: "movie-app-full-stack-1",
-          storageBucket: "movie-app-full-stack-1.appspot.com",
-          messagingSenderId: "732289375022",
-          appId: "1:732289375022:web:de388fa799e9021c4c38bf",
-          measurementId: "G-GK807470HK"
-      };
-      firebase.initializeApp(firebaseConfig);
-  
-      // Retrieve movieName from Firestore
-      const db = firebase.firestore();
-      const myFav = db.collection('favList').doc('fav');
-      myFav.get().then(doc => {
-        if (doc.exists) {
-          const data = doc.data();
-          const movieName = data.movieName;
-  
-          // Update h1 element with movieName
-          const a = document.getElementById('movieName');
-          a.textContent = movieName;
-        } else {
-          console.log("No such document!");
-        }
-      }).catch(error => {
-        console.log("Error getting document:", error);
-      });
+        // Initialize Firebase
+        const firebaseConfig = {
+            apiKey: "AIzaSyD052QaAfvdf9sdLExCn3d7ijdGNROPUAc",
+            authDomain: "movie-app-full-stack-1.firebaseapp.com",
+            databaseURL: "https://movie-app-full-stack-1-default-rtdb.firebaseio.com",
+            projectId: "movie-app-full-stack-1",
+            storageBucket: "movie-app-full-stack-1.appspot.com",
+            messagingSenderId: "732289375022",
+            appId: "1:732289375022:web:de388fa799e9021c4c38bf",
+            measurementId: "G-GK807470HK"
+        };
+        firebase.initializeApp(firebaseConfig);
+    
+        // Retrieve movieName from Firestore
+        const db = firebase.firestore();
+        const myFav = db.collection('favList').doc('fav');
+        myFav.get().then(doc => {
+            if (doc.exists) {
+                const data = doc.data();
+                const movieName = data.movieName;
+    
+                // Update h1 element with movieName
+                const a = document.getElementById('movieName');
+                a.textContent = movieName[0];
+    
+                // Update table with movieName
+                const table = document.getElementById('favTable');
+                for (let i = 0; i < movieName.length; i++) {
+                    const row = table.insertRow(-1);
+                    const cell1 = row.insertCell(0);
+                    const cell2 = row.insertCell(1);
+                    const cell3 = row.insertCell(2);
+                    cell1.innerHTML = '<img src="path/to/movie-poster.jpg" alt="Movie Poster">';
+                    cell2.textContent = movieName[i];
+                    cell3.innerHTML = '<button>Delete</button>';
+                }
+            } else {
+                console.log("No such document!");
+            }
+        }).catch(error => {
+            console.log("Error getting document:", error);
+        });
     </script>
+    
 </body>
 </html>
