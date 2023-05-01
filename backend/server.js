@@ -72,33 +72,44 @@ app.get('/movies', (req, res) => {
 });
 
 
-//top 5 movies on home page 
-app.get('/api/top-rated-movies', async (req, res) => {
-  const Url = `https://api.themoviedb.org/3/movie/top_rated?api_key=${API_KEY}&language=en-US&page=1`;
+//API endpoint that retrieves the top rated movies
+app.get('/movie', (req, res) => {
+  const Url = `https://api.themoviedb.org/3/movie/top_rated?api_key=${API_KEY}`;
+    request(Url, (error, response, body) => {
+        if (error) {
+            console.error(error);
+            res.status(500).send('An error occurred');
+        } else {
+            res.send(body);
+        }
+    });
+});
+
+//trending
+app.get('/movietrending', async (req, res) => {
+  const url = `https://api.themoviedb.org/3/trending/all/day?api_key=${API_KEY}&language=en-US&page=1`;
   try {
-    const response = await fetch(Url);
+    const response = await fetch(url);
     const data = await response.json();
-    const movies = data.results.slice(0, 7);
-    res.send(movies);
+    res.json(data);
   } catch (error) {
     console.error(error);
     res.status(500).send('Internal server error');
   }
 });
 
-//trending
-app.get('/api/trending', async (req, res) => {
-  const Url = `https://api.themoviedb.org/3/movie/trending/all/day?api_key=${API_KEY}&language=en-US&page=1`;
-  try {
-    const response = await fetch(Url);
-    const data = await response.json();
-    const movies = data.results.slice(0, 7);
-    res.send(movies);
-  } catch (error) {
-    console.error(error);
-    res.status(500).send('Internal server error');
-  }
-});
+// app.get('/api/trending', async (req, res) => {
+//   const Url = `https://api.themoviedb.org/3/movie/trending/all/day?api_key=${API_KEY}&language=en-US&page=1`;
+//   try {
+//     const response = await fetch(Url);
+//     const data = await response.json();
+//     const movies = data.results.slice(0, 7);
+//     res.send(movies);
+//   } catch (error) {
+//     console.error(error);
+//     res.status(500).send('Internal server error');
+//   }
+// });
 
 
 const PORT = process.env.PORT || 3000;
