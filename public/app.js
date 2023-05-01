@@ -83,7 +83,7 @@ async function googleLogin() {
   firebase.auth().signInWithPopup(provider)
   .then(async (result) => {
     const user = result.user;
-    document.write(`Hello ${user.displayName}`);
+    window.location.href = `home.html`;
     console.log(user);
     const idToken = await user.getIdToken();
     await validateToken(idToken);
@@ -104,7 +104,7 @@ async function emailSignUp() {
       displayName: fullName,
       
     });
-    window.location.href = `welcome.html?name=${fullName}`;
+    window.location.href = `home.html`;
 })
 .catch(console.log);
 }
@@ -119,7 +119,7 @@ async function emailLogin() {
       const idToken = await user.getIdToken();
       await validateToken(idToken);
       const fullName = user.displayName;
-      window.location.href = `welcome.html?name=${fullName}`;
+      window.location.href = `home.html`;
     })
     
    
