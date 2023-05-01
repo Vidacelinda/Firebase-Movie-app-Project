@@ -2,7 +2,7 @@ var admin = require("firebase-admin");
 const verifyToken = require('./middlewares/verifyToken');
 
 const { API_KEY } = require("./config.js");
-const Url = `https://api.themoviedb.org/3/movie/top_rated?api_key=${API_KEY}&language=en-US&page=1`;
+// const firebase = require("firebase");
 
 var cred = require("./credentials.json");
 const request = require('request');
@@ -40,6 +40,8 @@ app.use((err, req, res, next) => {
   res.status(500).send('Internal Server Error again');
 });
 
+
+
 //search funcitonality 
 app.get('/movies', (req, res) => {
   
@@ -71,10 +73,11 @@ app.get('/movies', (req, res) => {
 
 //top 5 movies on home page 
 app.get('/api/top-rated-movies', async (req, res) => {
+  const Url = `https://api.themoviedb.org/3/movie/top_rated?api_key=${API_KEY}&language=en-US&page=1`;
   try {
     const response = await fetch(Url);
     const data = await response.json();
-    const movies = data.results.slice(0, 5);
+    const movies = data.results.slice(0, 7);
     res.send(movies);
   } catch (error) {
     console.error(error);
