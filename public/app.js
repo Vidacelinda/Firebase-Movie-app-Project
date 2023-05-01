@@ -148,6 +148,7 @@ async function emailLogin() {
       console.log("User signed out successfully");
      // console.log(fullName);
       alert("You have signed out successfully");
+      window.location.href = `index.html`;
     }).catch((error) => {
       // An error happened.
       console.error("Error during sign-out:", error);

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> -->
+    <title>My Movie Website</title>
+    <link rel="stylesheet" href="navbar.css">
+    <link rel="stylesheet" href="homestyle.css">
+    <link rel="stylesheet" href="info.css">
+    <style>
+        /* poster */
+        #poster-container img {
+        width: 210px;
+        margin: 0 10px;
+        }
+        /* scroller */
+        .movie-scroll-container {
+        width: 100%;
+        overflow-x: scroll;
+        white-space: nowrap;
+        margin:10px;
+        background-color: #333333;
+        }
+        /* bar scrolling color*/
+        .movie-scroll-container::-webkit-scrollbar {
+        width: 8px;
+        height: 8px;
+        }
+        .movie-scroll-container::-webkit-scrollbar-track {
+        background-color: #333333;
+        }
+        .movie-scroll-container::-webkit-scrollbar-thumb {
+        background-color: #555555;
+        border-radius: 8px;
+        }
+        
+    </style>
+     <!-- <script src="api-keys.js"></script> -->
+</head>
+<body>
+        <div id="navbar"></div>
+        <script src="loadnavbar.js"></script>
+
+        <div class="container">
+            <p>The Movie App is a web application that allows users to search for movies, view movie details, and manage their favorite movies. 
+            Users can log in using their Google account or sign up with an email and password.
+            The app uses the Firebase platform for authentication and data storage. 
+            The application uses The Movie Database API to fetch movie data and Firebase Firestore to store the user's favorite movies.</p>
+        </div>
+
+    <footer>
+        <p>&copy; 2023 The Movie APP. All rights reserved.</p>
+    </footer>
+</body>
+</html>
