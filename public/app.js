@@ -39,9 +39,7 @@ document.addEventListener("DOMContentLoaded", event => {
     measurementId: "G-GK807470HK"
   });
   const app = firebase.app();
-
   console.log(app);
-
 });
 
 async function getIdToken() {
@@ -85,12 +83,12 @@ async function googleLogin() {
   firebase.auth().signInWithPopup(provider)
   .then(async (result) => {
     const user = result.user;
+    document.write(`Hello ${user.displayName}`);
     console.log(user);
     const idToken = await user.getIdToken();
     await validateToken(idToken);
-    window.location.href = `home.html`;
   })
-  
+  .catch(console.log);
 }
 
 async function emailSignUp() {
@@ -106,7 +104,7 @@ async function emailSignUp() {
       displayName: fullName,
       
     });
-    window.location.href = 'home.html'
+    window.location.href = `welcome.html?name=${fullName}`;
 })
 .catch(console.log);
 }
@@ -120,35 +118,8 @@ async function emailLogin() {
       const user = result.user;
       const idToken = await user.getIdToken();
       await validateToken(idToken);
-      window.location.href = `home.html`;
+      const fullName = user.displayName;
+      window.location.href = `welcome.html?name=${fullName}`;
     })
-    
-   
+    .catch(console.log);
   }
-  async function signOut() {
-    try {
-      await firebase.auth().signOut();
-      console.log("User signed out successfully");
-      // Redirect to the login page or perform any other action after signing out
-      window.location.href = 'index.html';
-    } catch (error) {
-      console.error("Error signing out:", error);
-    }
-  }
-  
-  // Assign the signOut function to the window object
-  window.signOut = signOut;
-
-  function addSignOutListener() {
-    const signOutBtn = document.getElementById("sign-out-btn");
-  
-    if (signOutBtn) {
-      signOutBtn.addEventListener("click", async () => {
-        await signOut();
-      });
-    }
-  }
-  
-  document.addEventListener("DOMContentLoaded", () => {
-    addSignOutListener();
-  });
