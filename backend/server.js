@@ -76,7 +76,7 @@ app.get('/api/top-rated-movies', async (req, res) => {
   try {
     const response = await fetch(Url);
     const data = await response.json();
-    const movies = data.results.slice(0, 5);
+    const movies = data.results.slice(0, 7);
     res.send(movies);
   } catch (error) {
     console.error(error);

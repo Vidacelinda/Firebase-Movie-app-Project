@@ -6,6 +6,8 @@
     <title>My Movie Website</title>
     <link rel="stylesheet" href="navbar.css">
     <link rel="stylesheet" href="homestyle.css">
+    <script type="module" src="https://www.gstatic.com/firebasejs/9.0.0/firebase-app.js"></script>
+    <script type="module" src="https://www.gstatic.com/firebasejs/9.0.0/firebase-firestore.js"></script>
     <!-- favorites table css -->
     <link rel="stylesheet" href="fave_table.css">
 </head>
@@ -14,8 +16,10 @@
         <div id="navbar"></div>
    
         <h1>Favorites</h1>
-       
-            <div>
+        <div id="favorites-container"> </div>
+
+        
+            <!-- <div>
             <table>
                 <thead>
                   <tr>
@@ -38,8 +42,8 @@
                  
                 </tbody>
               </table>
-              </div>
-        
+              </div> -->
+           
         <script src="loadnavbar.js"></script>
         
     <!-- <footer>
