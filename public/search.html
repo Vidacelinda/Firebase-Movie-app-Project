@@ -136,7 +136,10 @@
 
                 // Add an event listener to the button that stores the name of the movie
                 favoriteButton.addEventListener("click", function() {
-                    const movieName = data.title;
+                    const movieName = {
+                    title: data.title,
+                    release_date: data.release_date
+                };
                     storeFavoriteMovie(movieName);
                 });
 
