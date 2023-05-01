@@ -1,4 +1,4 @@
-
+let currentUser;
 function showGoogleLogin() {
   document.getElementById("google-login").style.display = "block";
   document.getElementById("email-signup").style.display = "none";
@@ -84,9 +84,11 @@ async function googleLogin() {
   .then(async (result) => {
     const user = result.user;
     document.write(`Hello ${user.displayName}`);
+    console.log(`Hello ${user.displayName}`);
     console.log(user);
     const idToken = await user.getIdToken();
     await validateToken(idToken);
+    window.location.href = `home.html`;
   })
   .catch(console.log);
 }
@@ -104,10 +106,12 @@ async function emailSignUp() {
       displayName: fullName,
       
     });
-    window.location.href = `welcome.html?name=${fullName}`;
+    window.location.href = `home.html`;
 })
 .catch(console.log);
 }
+
+//let fullName = '';
 
 async function emailLogin() {
   const email = document.getElementById("login-email").value;
@@ -119,7 +123,35 @@ async function emailLogin() {
       const idToken = await user.getIdToken();
       await validateToken(idToken);
       const fullName = user.displayName;
-      window.location.href = `welcome.html?name=${fullName}`;
+     // console.log(fullName);
+      window.location.href = `home.html`;
     })
     .catch(console.log);
+  }
+
+
+  // async function signOut() {
+  //   try {
+  //     await firebase.auth().signOut();
+  //     console.log("User signed out successfully");
+  //     alert("You have signed out successfully");
+  //     // Redirect user to sign-in page or any other appropriate page
+  //   } catch (error) {
+  //     console.error("Error during sign-out:", error);
+  //   }
+  // }
+
+  async function signOut() {
+   // console.log(fullName);
+    firebase.auth().signOut().then(() => {
+      // Sign-out successful.
+      console.log("User signed out successfully");
+     // console.log(fullName);
+      alert("You have signed out successfully");
+    }).catch((error) => {
+      // An error happened.
+      console.error("Error during sign-out:", error);
+    });
+    
+  
   }

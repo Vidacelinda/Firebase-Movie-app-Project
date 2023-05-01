@@ -6,6 +6,23 @@
     <title>My Movie Website</title>
     <link rel="stylesheet" href="navbar.css">
     <link rel="stylesheet" href="homestyle.css">
+    <script type="module" src="https://www.gstatic.com/firebasejs/9.0.0/firebase-app.js"></script>
+    <script type="module" src="https://www.gstatic.com/firebasejs/9.0.0/firebase-firestore.js"></script>
+
+    <!-- added for db -->
+    <script src="/__/firebase/9.19.1/firebase-app-compat.js"></script>
+    <script src="/__/firebase/9.19.1/firebase-auth-compat.js"></script>
+    <!-- database  -->
+    <script src="/__/firebase/9.19.1/firebase-database-compat.js"></script>
+    <script src="/__/firebase/9.19.1/firebase-firestore-compat.js"></script>
+    <!--  DB-->
+    <script src="/__/firebase/9.19.1/firebase-functions-compat.js"></script>
+    <script src="/__/firebase/9.19.1/firebase-messaging-compat.js"></script>
+    <script src="/__/firebase/9.19.1/firebase-storage-compat.js"></script>
+    <script src="/__/firebase/9.19.1/firebase-analytics-compat.js"></script>
+    <script src="/__/firebase/9.19.1/firebase-remote-config-compat.js"></script>
+    <script src="/__/firebase/9.19.1/firebase-performance-compat.js"></script>
+    <!-- <script src="app.js"></script> -->
     <!-- favorites table css -->
     <link rel="stylesheet" href="fave_table.css">
 </head>
@@ -14,7 +31,9 @@
         <div id="navbar"></div>
    
         <h1>Favorites</h1>
-       
+        <div id="favorites-container"> </div>
+
+        
             <div>
             <table>
                 <thead>
@@ -27,7 +46,7 @@
                 <tbody>
                   <tr>
                     <td><img src="path/to/movie-poster.jpg" alt="Movie Poster"></td>
-                    <td><a href="https://www.example.com/movie">Movie Name</a></td>
+                    <td><a id="movieName" href="https://www.example.com/movie"></a></td>
                     <td><button>Delete</button></td>
                   </tr>
                   <tr>
@@ -39,11 +58,45 @@
                 </tbody>
               </table>
               </div>
-        
+           
         <script src="loadnavbar.js"></script>
         
     <!-- <footer>
         <p>&copy; 2023 The Movie APP. All rights reserved.</p>
     </footer> -->
+
+    <!-- DATA BASE  -->
+    <script>
+      // Initialize Firebase
+      const firebaseConfig = {
+          apiKey: "AIzaSyD052QaAfvdf9sdLExCn3d7ijdGNROPUAc",
+          authDomain: "movie-app-full-stack-1.firebaseapp.com",
+          databaseURL: "https://movie-app-full-stack-1-default-rtdb.firebaseio.com",
+          projectId: "movie-app-full-stack-1",
+          storageBucket: "movie-app-full-stack-1.appspot.com",
+          messagingSenderId: "732289375022",
+          appId: "1:732289375022:web:de388fa799e9021c4c38bf",
+          measurementId: "G-GK807470HK"
+      };
+      firebase.initializeApp(firebaseConfig);
+  
+      // Retrieve movieName from Firestore
+      const db = firebase.firestore();
+      const myFav = db.collection('favList').doc('fav');
+      myFav.get().then(doc => {
+        if (doc.exists) {
+          const data = doc.data();
+          const movieName = data.movieName;
+  
+          // Update h1 element with movieName
+          const a = document.getElementById('movieName');
+          a.textContent = movieName;
+        } else {
+          console.log("No such document!");
+        }
+      }).catch(error => {
+        console.log("Error getting document:", error);
+      });
+    </script>
 </body>
 </html>

@@ -1,9 +1,13 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Movie Search</title>
 	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="api-keys.js"></script> <!-- include the file with the API key -->
+    <link rel="stylesheet" href="navbar.css">
+    <link rel="stylesheet" href="homestyle.css">
+
 	<style>
 		.container {
 			margin: 20px;
@@ -40,8 +44,9 @@
 	</style>
 </head>
 <body>
+    <div id="navbar"></div>
 	<div class="container">
-		<h1>Moe Search</h1>
+		<h1>Movie Search</h1>
 		<form>
 			<label for="search">Search by movie name:</label>
 			<input type="text" id="search" name="search">
@@ -59,21 +64,48 @@
 
 	<script>
 		function searchMovies() {
-			const apiKey = MOVIE_DB_API_KEY; // replace with your actual API key
-			const query = document.getElementById("search").value;
-			const url = `https://api.themoviedb.org/3/search/movie?api_key=${apiKey}&query=${query}`;
+			const url = `http://localhost:3000/movies?query=${document.getElementById("search").value}`;
 			$.get(url, function(data) {
-				if (data.results.length > 0) {
-					const movie = data.results[0];
-					document.getElementById("poster").src = `https://image.tmdb.org/t/p/w500${movie.poster_path}`;
-					document.getElementById("title").innerHTML = movie.title;
-					document.getElementById("overview").innerHTML = movie.overview;
-					document.getElementById("release").innerHTML = `Release date: ${movie.release_date}`;
+				if (data.error) {
+					alert(data.error);
 				} else {
-					alert("No movie found.");
+					document.getElementById("poster").src = data.poster_path;
+                    document.getElementById("title").innerHTML = data.title;
+                    document.getElementById("overview").innerHTML = data.overview;
+                    document.getElementById("release").innerHTML = data.release_date;
+
+                    // Remove any existing favorite button before appending a new one
+                    const existingButton = document.getElementById("favorite-button");
+                    if (existingButton) {
+                        existingButton.remove();
+                    }
+
+                    // Create a new button element
+                    const favoriteButton = document.createElement("button");
+                    favoriteButton.innerHTML = "Add to Favorites";
+                    favoriteButton.id = "favorite-button";
+
+                    // Add an event listener to the button that stores the name of the movie
+                    favoriteButton.addEventListener("click", function() {
+                        const movieName = data.title;
+                        storeFavoriteMovie(movieName);
+                    });
+
+                    // Pass the name of the movie to the function using a data attribute
+                    favoriteButton.setAttribute("data-movie-name", data.title);
+
+                    // Add the button element to the page
+                    document.querySelector(".poster").appendChild(favoriteButton);
 				}
 			});
 		}
+        function storeFavoriteMovie(movieName) {
+            // Call your function to store the name of the movie here
+            // somehow store info in a collection : future 
+            console.log(`Adding ${movieName} to favorites!`);
+        }
 	</script>
+
+<script src="loadnavbar.js"></script>
 </body>
 </html>
