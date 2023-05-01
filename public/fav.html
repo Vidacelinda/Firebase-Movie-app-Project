@@ -54,3 +54,16 @@
   </script>
 </body>
 </html>
+
+        // Update h1 element with movieName
+        const h1 = document.getElementById('movieName');
+        h1.textContent = movieName;
+      } else {
+        console.log("No such document!");
+      }
+    }).catch(error => {
+      console.log("Error getting document:", error);
+    });
+  </script>
+</body>
+</html>
