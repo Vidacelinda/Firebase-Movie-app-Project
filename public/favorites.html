@@ -112,15 +112,40 @@
   table.deleteRow(rowNum+1); // Delete row from table
 
   // Delete movie from Firestore
-  const db = firebase.firestore();
-  const myFav = db.collection('favList').doc('fav');
-  myFav.update({
-    movieName: firebase.firestore.FieldValue.arrayRemove(title)
-  }).then(() => {
-    console.log("Movie successfully deleted from database!");
-  }).catch((error) => {
-    console.error("Error removing movie from database: ", error);
-  });
+  // const db = firebase.firestore();
+  // const myFav = db.collection('favList').doc('fav');
+  // myFav.update({
+  //   movieName: firebase.firestore.FieldValue.arrayRemove(title)
+  // }).then(() => {
+  //   console.log("Movie successfully deleted from database!");
+  // }).catch((error) => {
+  //   console.error("Error removing movie from database: ", error);
+  // });
+
+   // Fetch the document
+   myFav.get().then((doc) => {
+    if (doc.exists) {
+    const data = doc.data();
+    const movieName = data.movieName;
+
+    // Delete an element at a specific index
+    const indexToDelete = 4; // Replace # with the index you want to delete
+    movieName.splice(indexToDelete, 1);
+
+    // Save the updated array back to Firestore
+    return myFav.update({ movieName: movieName });
+    } else {
+    console.log('No such document!');
+    return null;
+    }
+    }).then((result) => {
+    if (result !== null) {
+    console.log('Element successfully deleted from array!');
+    }
+    }).catch((error) => {
+    console.error('Error deleting element from array: ', error);
+    });
+    // 
 }
 </script>
 

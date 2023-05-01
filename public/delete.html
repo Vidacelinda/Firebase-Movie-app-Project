@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>My Favorite Movie</title>
+    <script src="/__/firebase/9.19.1/firebase-app-compat.js"></script>
+    <script src="/__/firebase/9.19.1/firebase-auth-compat.js"></script>
+    <!-- database  -->
+    <script src="/__/firebase/9.19.1/firebase-database-compat.js"></script>
+    <script src="/__/firebase/9.19.1/firebase-firestore-compat.js"></script>
+    <!--  DB-->
+    <script src="/__/firebase/9.19.1/firebase-functions-compat.js"></script>
+    <script src="/__/firebase/9.19.1/firebase-messaging-compat.js"></script>
+    <script src="/__/firebase/9.19.1/firebase-storage-compat.js"></script>
+    <script src="/__/firebase/9.19.1/firebase-analytics-compat.js"></script>
+    <script src="/__/firebase/9.19.1/firebase-remote-config-compat.js"></script>
+    <script src="/__/firebase/9.19.1/firebase-performance-compat.js"></script>
+    <!-- <script src="app.js"></script> -->
+</head>
+<body>
+  <h1 id="movieName"></h1>
+
+
+  <script>
+    // Initialize Firebase
+    const firebaseConfig = {
+        apiKey: "AIzaSyD052QaAfvdf9sdLExCn3d7ijdGNROPUAc",
+        authDomain: "movie-app-full-stack-1.firebaseapp.com",
+        databaseURL: "https://movie-app-full-stack-1-default-rtdb.firebaseio.com",
+        projectId: "movie-app-full-stack-1",
+        storageBucket: "movie-app-full-stack-1.appspot.com",
+        messagingSenderId: "732289375022",
+        appId: "1:732289375022:web:de388fa799e9021c4c38bf",
+        measurementId: "G-GK807470HK"
+    };
+    firebase.initializeApp(firebaseConfig);
+
+
+    const db = firebase.firestore();
+    const myFav = db.collection('favList').doc('fav');
+
+    // Fetch the document
+    myFav.get().then((doc) => {
+    if (doc.exists) {
+    const data = doc.data();
+    const movieName = data.movieName;
+
+    // Delete an element at a specific index
+    const indexToDelete = 4; // Replace # with the index you want to delete
+    movieName.splice(indexToDelete, 1);
+
+    // Save the updated array back to Firestore
+    return myFav.update({ movieName: movieName });
+    } else {
+    console.log('No such document!');
+    return null;
+    }
+    }).then((result) => {
+    if (result !== null) {
+    console.log('Element successfully deleted from array!');
+    }
+    }).catch((error) => {
+    console.error('Error deleting element from array: ', error);
+    });
+  </script>
+  
+
+</body>
+</html>
