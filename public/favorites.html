@@ -106,21 +106,30 @@
     console.log("Error getting document:", error);
   });
 
-  function deleteMovie(rowNum) {
-  const table = document.getElementById('favTable');
-  const title = table.rows[rowNum+1].cells[1].textContent; // Get title of movie to be deleted from table row
-  table.deleteRow(rowNum+1); // Delete row from table
+   // Delete a movie from the array and update Firestore
+   function deleteMovie(index) {
+      myFav.get().then((doc) => {
+        if (doc.exists) {
+          const data = doc.data();
+          const movieName = data.movieName;
 
-  // Delete movie from Firestore
-  const db = firebase.firestore();
-  const myFav = db.collection('favList').doc('fav');
-  myFav.update({
-    movieName: firebase.firestore.FieldValue.arrayRemove(title)
-  }).then(() => {
-    console.log("Movie successfully deleted from database!");
-  }).catch((error) => {
-    console.error("Error removing movie from database: ", error);
-  });
+          // Delete the movie at the given index
+          movieName.splice(index, 1);
+
+          // Save the updated array back to Firestore
+          return myFav.update({ movieName: movieName });
+        } else {
+          console.log('No such document!');
+          return null;
+        }
+      }).then((result) => {
+        if (result !== null) {
+          console.log('Element successfully deleted from array!');
+          location.reload(); // Reload the page to update the table
+        }
+        }).catch((error) => {
+            console.error('Error deleting element from array:', error);
+        });
 }
 </script>
 
