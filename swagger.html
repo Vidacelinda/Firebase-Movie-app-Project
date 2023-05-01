@@ -1,17 +1,21 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>My API Documentation</title>
-    <link rel="stylesheet" type="text/css" href="./node_modules/swagger-ui-dist/swagger-ui.css">
+    <title>Swagger UI</title>
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/swagger-ui/4.2.2/swagger-ui.min.css" />
   </head>
   <body>
     <div id="swagger-ui"></div>
-    <script src="./node_modules/swagger-ui-dist/swagger-ui-bundle.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/swagger-ui/4.2.2/swagger-ui-bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/swagger-ui/4.2.2/swagger-ui-standalone-preset.min.js"></script>
     <script>
       window.onload = function() {
         SwaggerUIBundle({
-          url: "/swagger.json",
+          url: "./backend/api/swagger/swagger.json",
           dom_id: "#swagger-ui",
+          presets: [SwaggerUIBundle.presets.apis, SwaggerUIStandalonePreset],
+          layout: "BaseLayout",
         })
       }
     </script>

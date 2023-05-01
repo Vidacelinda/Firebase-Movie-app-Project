@@ -215,6 +215,10 @@ app.get('/api/trending', async (req, res) => {
   }
 });
 
+const swaggerDocument = require('./api/swagger/swagger.json');
+const swaggerUi = require('swagger-ui-express');
+
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
