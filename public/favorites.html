@@ -38,23 +38,22 @@
                 <table id="favTable">
                     <thead>
                       <tr>
-                        <th>Movie Poster</th>
+
                         <th>Movie Name</th>
                         <th>Action</th>
                       </tr>
                     </thead>
                     <tbody>
                       <tr>
-                        <td><img src="path/to/movie-poster.jpg" alt="Movie Poster"></td>
+                        
                         <td><a id="movieName" href="https://www.example.com/movie"></a></td>
-                        <td><button>Delete</button></td>
+                        <td><button onclick="deleteMovie(this)">Delete</button></td>
                       </tr>
                       <tr>
-                        <td><img src="path/to/another-movie-poster.jpg" alt="Another Movie Poster"></td>
+                        
                         <td><a href="https://www.example.com/another-movie">Another Movie Name</a></td>
-                        <td><button>Delete</button></td>
+                        <td><button onclick="deleteMovie(this)">Delete</button></td>
                       </tr>
-                     
                     </tbody>
                   </table>
               </div>
@@ -98,17 +97,34 @@
                     const row = table.insertRow(-1);
                     const cell1 = row.insertCell(0);
                     const cell2 = row.insertCell(1);
-                    const cell3 = row.insertCell(2);
-                    cell1.innerHTML = '<img src="path/to/movie-poster.jpg" alt="Movie Poster">';
-                    cell2.textContent = movieName[i];
-                    cell3.innerHTML = '<button>Delete</button>';
+                    cell1.textContent = movieName[i];
+                    cell2.innerHTML = '<button onclick="deleteMovie(this)">Delete</button>';
+                    console.log(cell1.textContent);
                 }
+                
             } else {
                 console.log("No such document!");
             }
         }).catch(error => {
             console.log("Error getting document:", error);
         });
+
+        function deleteMovie(button) {
+            const row = button.parentNode.parentNode;
+            const cell = row.cells[0];
+            const name = cell.querySelector('a') ? cell.querySelector('a').textContent : cell.textContent;
+
+            // Delete the movie from the database
+            const myFav = db.collection('favList').doc('fav');
+            myFav.update({
+                movieName: firebase.firestore.FieldValue.arrayRemove(name)
+            }).then(() => {
+                console.log(`${name} removed from favorites.`);
+                row.remove(); // Remove the row from the table
+            }).catch(error => {
+                console.log(`Error removing ${name} from favorites:`, error);
+            });
+         }
     </script>
     
 </body>
