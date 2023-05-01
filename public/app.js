@@ -122,3 +122,19 @@ function showGoogleLogin() {
       })
       .catch(console.log);
     }
+
+    document.addEventListener("DOMContentLoaded",event =>{
+
+      const app=firebase.app();
+  
+      const db= firebase.firestore();
+  
+      const myFav=db.collection('favoriteList').doc('favorite');
+      // retirve it
+      myFav.get()
+            .then(doc =>{
+              const data =doc.data();
+              document.write(data.title)
+            })
+  
+    }) 
