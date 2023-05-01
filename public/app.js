@@ -1,4 +1,4 @@
-
+let currentLog;
 function showGoogleLogin() {
   document.getElementById("google-login").style.display = "block";
   document.getElementById("email-signup").style.display = "none";
@@ -126,29 +126,18 @@ async function emailLogin() {
    
   }
   async function signOut() {
-    try {
-      await firebase.auth().signOut();
-      console.log("User signed out successfully");
-      // Redirect to the login page or perform any other action after signing out
-      window.location.href = 'index.html';
-    } catch (error) {
-      console.error("Error signing out:", error);
-    }
-  }
-  
-  // Assign the signOut function to the window object
-  window.signOut = signOut;
-
-  function addSignOutListener() {
-    const signOutBtn = document.getElementById("sign-out-btn");
-  
-    if (signOutBtn) {
-      signOutBtn.addEventListener("click", async () => {
-        await signOut();
-      });
-    }
-  }
-  
-  document.addEventListener("DOMContentLoaded", () => {
-    addSignOutListener();
-  });
+    // console.log(fullName);
+     firebase.auth().signOut().then(() => {
+       // Sign-out successful.
+       document.write(`Goodbye ${currentLog}`);
+       console.log("User signed out successfully");
+      // console.log(fullName);
+       alert("You have signed out successfully");
+       window.location.href = `index.html`;
+     }).catch((error) => {
+       // An error happened.
+       console.error("Error during sign-out:", error);
+     });
+     
+   
+   }

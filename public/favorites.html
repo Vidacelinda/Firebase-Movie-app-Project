@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Movie Website</title>
+    <link rel="stylesheet" href="navbar.css">
+    <link rel="stylesheet" href="homestyle.css">
+    <script type="module" src="https://www.gstatic.com/firebasejs/9.0.0/firebase-app.js"></script>
+    <script type="module" src="https://www.gstatic.com/firebasejs/9.0.0/firebase-firestore.js"></script>
+
+    <!-- added for db -->
+    <script src="/__/firebase/9.19.1/firebase-app-compat.js"></script>
+    <script src="/__/firebase/9.19.1/firebase-auth-compat.js"></script>
+    <!-- database  -->
+    <script src="/__/firebase/9.19.1/firebase-database-compat.js"></script>
+    <script src="/__/firebase/9.19.1/firebase-firestore-compat.js"></script>
+    <!--  DB-->
+    <script src="/__/firebase/9.19.1/firebase-functions-compat.js"></script>
+    <script src="/__/firebase/9.19.1/firebase-messaging-compat.js"></script>
+    <script src="/__/firebase/9.19.1/firebase-storage-compat.js"></script>
+    <script src="/__/firebase/9.19.1/firebase-analytics-compat.js"></script>
+    <script src="/__/firebase/9.19.1/firebase-remote-config-compat.js"></script>
+    <script src="/__/firebase/9.19.1/firebase-performance-compat.js"></script>
+    <!-- <script src="app.js"></script> -->
+    <!-- favorites table css -->
+    <link rel="stylesheet" href="fave_table.css">
+</head>
+
+<body>
+        <div id="navbar"></div>
+        <div class="container">
+        <h1>Favorites</h1>
+        <!-- DO NOT REMOVE THIS H2 MOVIE NAME!! Will cause bug otherwise! -->
+        <h2 id="movieName"></h2>
+        <div id="favorites-container"> </div>
+
+        
+            <div>
+                <table id="favTable">
+                    <thead>
+                      <tr>
+                        <th>Release Date</th>
+                        <th>Movie Name</th>
+                        <th>Action</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                  </table>
+              </div>
+         </div>  
+        <script src="loadnavbar.js"></script>
+        
+    <!-- <footer>
+        <p>&copy; 2023 The Movie APP. All rights reserved.</p>
+    </footer> -->
+
+   <!-- DATA BASE  -->
+<script>
+  // Initialize Firebase
+  const firebaseConfig = {
+    apiKey: "AIzaSyD052QaAfvdf9sdLExCn3d7ijdGNROPUAc",
+    authDomain: "movie-app-full-stack-1.firebaseapp.com",
+    databaseURL: "https://movie-app-full-stack-1-default-rtdb.firebaseio.com",
+    projectId: "movie-app-full-stack-1",
+    storageBucket: "movie-app-full-stack-1.appspot.com",
+    messagingSenderId: "732289375022",
+    appId: "1:732289375022:web:de388fa799e9021c4c38bf",
+    measurementId: "G-GK807470HK"
+  };
+  firebase.initializeApp(firebaseConfig);
+
+  // Retrieve movieName from Firestore
+  const db = firebase.firestore();
+  const myFav = db.collection('favList').doc('fav');
+  myFav.get().then(doc => {
+    if (doc.exists) {
+      const data = doc.data();
+      const movieName = data.movieName;
+
+      // Update h1 element with first movie name
+      const a = document.getElementById('movieName');
+      a.textContent = movieName[0];
+
+      // Update table with movie names
+      const table = document.getElementById('favTable');
+      for (let i = 0; i < movieName.length; i++) {
+        const row = table.insertRow(-1);
+        const cell1 = row.insertCell(0);
+        const cell2 = row.insertCell(1);
+        const cell3 = row.insertCell(2);
+        cell1.innerHTML = '<a href="https://www.example.com/movie">' + movieName[i].release_date + '</a>';
+        cell2.innerHTML = '<a href="https://www.example.com/movie">' + movieName[i].title + '</a>';
+        cell3.innerHTML = '<button onclick="deleteMovie(' + i + ')">Delete</button>';
+
+        if (i === 0) {
+          const a = document.getElementById('movieName');
+          a.textContent = movieName[i].title;
+        }
+      }
+    } else {
+      console.log("No such document!");
+    }
+  }).catch(error => {
+    console.log("Error getting document:", error);
+  });
+
+  function deleteMovie(rowNum) {
+  const table = document.getElementById('favTable');
+  const title = table.rows[rowNum+1].cells[1].textContent; // Get title of movie to be deleted from table row
+  table.deleteRow(rowNum+1); // Delete row from table
+
+  // Delete movie from Firestore
+  const db = firebase.firestore();
+  const myFav = db.collection('favList').doc('fav');
+  myFav.update({
+    movieName: firebase.firestore.FieldValue.arrayRemove(title)
+  }).then(() => {
+    console.log("Movie successfully deleted from database!");
+  }).catch((error) => {
+    console.error("Error removing movie from database: ", error);
+  });
+}
+</script>
+
+    
+</body>
+</html>
