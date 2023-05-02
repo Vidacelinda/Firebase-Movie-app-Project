@@ -2,7 +2,7 @@
 * Anastasija Bulatovic
 * Marven Cesar
 * Thomas Wozniak
-* Carlo Leva
+* Carlo Leiva
 
 final-project-created by GitHub Classroom
 # Movie App
