@@ -4,6 +4,7 @@
   "description": "* Marven Cesar final-project-created by GitHub Classroom",
   "main": "index.js",
   "dependencies": {
+    "all": "^0.0.0",
     "ansi-regex": "^5.0.1",
     "ansi-styles": "^4.3.0",
     "cliui": "^7.0.4",
@@ -32,6 +33,7 @@
     "string-width": "^4.2.3",
     "strip-ansi": "^6.0.1",
     "swagger-jsdoc": "^6.2.8",
+    "swagger-ui-express": "^4.6.2",
     "tr46": "^0.0.3",
     "tslib": "^2.5.0",
     "webidl-conversions": "^3.0.1",
