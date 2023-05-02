@@ -4,8 +4,11 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Movie APP</title>
-
-
+    <!-- bootstrap -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <!-- include only the Firebase features as you need -->
     <script src="/__/firebase/9.19.1/firebase-app-compat.js"></script>
     <script src="/__/firebase/9.19.1/firebase-auth-compat.js"></script>
@@ -26,9 +29,10 @@
     <div id="navbar"></div>
     <div class="centered-container">
       <h1>The Movie APP</h1>
-      <button onclick="googleLogin()">Login with Google</button>
-      <button onclick="showEmailLogin()">Login with Email and Password</button>
-      <button onclick="showEmailSignUp()">Sign up with Email and Password</button>
+      <!-- BootStrap Button class="btn btn-primary"-->
+      <button class="btn btn-primary" onclick="googleLogin()">Login with Google</button>
+      <button class="btn btn-primary" onclick="showEmailLogin()">Login with Email and Password</button>
+      <button class="btn btn-primary" onclick="showEmailSignUp()">Sign up with Email and Password</button>
     
 
       <div id="email-signup" class="form-container" style="display: none;">
