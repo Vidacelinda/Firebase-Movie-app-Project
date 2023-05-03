@@ -49,11 +49,11 @@
         </div>
        
         <script>
-            // API endpoint to retrieve top 5 rated movies
+            // API endpoint to retrieve top 7 rated movies
             // Function to retrieve data from API and render poster images
             $.getJSON('http://localhost:3000/movie', function(data) {
                 var movies = data.results;
-                //Render posters of first 5 movies
+                //Render posters of first 7 movies
                 for (var i = 0; i < 7; i++) {
                     var poster_url = "https://image.tmdb.org/t/p/w185" + movies[i].poster_path;
                     var poster = "<img src='" + poster_url + "'>";

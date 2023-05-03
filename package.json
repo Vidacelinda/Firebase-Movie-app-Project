@@ -32,6 +32,7 @@
     "safe-buffer": "^5.2.1",
     "string-width": "^4.2.3",
     "strip-ansi": "^6.0.1",
+    "swagger": "^0.7.5",
     "tr46": "^0.0.3",
     "tslib": "^2.5.0",
     "webidl-conversions": "^3.0.1",
