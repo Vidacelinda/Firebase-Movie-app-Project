@@ -4,6 +4,7 @@
   "description": "* Marven Cesar final-project-created by GitHub Classroom",
   "main": "index.js",
   "dependencies": {
+    "all": "^0.0.0",
     "ansi-regex": "^5.0.1",
     "ansi-styles": "^4.3.0",
     "bootstrap": "^5.2.3",

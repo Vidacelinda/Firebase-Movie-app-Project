@@ -9,6 +9,9 @@ var cred = require("./credentials.json");
 const request = require('request');
 // including fetch for home top 5 movies api request 
 const fetch = require('node-fetch');
+const request = require('request');
+// including fetch for home top 5 movies api request 
+const fetch = require('node-fetch');
 
 admin.initializeApp({
   credential: admin.credential.cert(cred)

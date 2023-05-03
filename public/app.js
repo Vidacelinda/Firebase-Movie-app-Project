@@ -1,4 +1,5 @@
 let currentLog;
+let currentLog;
 function showGoogleLogin() {
   document.getElementById("google-login").style.display = "block";
   document.getElementById("email-signup").style.display = "none";
@@ -107,6 +108,7 @@ async function emailSignUp() {
       
     });
     window.location.href = `home.html`;
+    window.location.href = `home.html`;
 })
 .catch(console.log);
 }
@@ -126,7 +128,8 @@ async function emailLogin() {
      // console.log(fullName);
       window.location.href = `home.html`;
     })
-    .catch(console.log);
+    
+   
   }
 
   // async function signOut() {
