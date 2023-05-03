@@ -1,4 +1,4 @@
-let currentLog;
+
 let currentLog;
 function showGoogleLogin() {
   document.getElementById("google-login").style.display = "block";
@@ -107,7 +107,6 @@ async function emailSignUp() {
       displayName: fullName,
       
     });
-    window.location.href = `home.html`;
     window.location.href = `home.html`;
 })
 .catch(console.log);
