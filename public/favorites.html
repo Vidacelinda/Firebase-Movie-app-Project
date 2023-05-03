@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My Movie Website</title>
-    <link rel="stylesheet" href="navbar.css">
+    <link rel="stylesheet" href="style/navbar.css">
     <link rel="stylesheet" href="style/homestyle.css">
     <script type="module" src="https://www.gstatic.com/firebasejs/9.0.0/firebase-app.js"></script>
     <script type="module" src="https://www.gstatic.com/firebasejs/9.0.0/firebase-firestore.js"></script>
@@ -90,8 +90,8 @@
         const cell1 = row.insertCell(0);
         const cell2 = row.insertCell(1);
         const cell3 = row.insertCell(2);
-        cell1.innerHTML = '<a href="https://www.example.com/movie">' + movieName[i].release_date + '</a>';
-        cell2.innerHTML = '<a href="https://www.example.com/movie">' + movieName[i].title + '</a>';
+        cell1.innerHTML = '<a>' + movieName[i].release_date + '</a>';
+        cell2.innerHTML = '<a>' + movieName[i].title + '</a>';
         cell3.innerHTML = '<button onclick="deleteMovie(' + i + ')">Delete</button>';
 
         // if (i === 0) {
