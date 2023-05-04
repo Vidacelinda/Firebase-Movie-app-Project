@@ -6,6 +6,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <!-- <script src="https://code.jquery.com/jquery-3.6.3.js"></script> -->
     <title>My Movie Website</title>
     <link rel="stylesheet" href="style/navbar.css">
     <link rel="stylesheet" href="style/homestyle.css">
@@ -29,7 +30,7 @@
         <script>
             // API endpoint to retrieve top 7 rated movies
             // Function to retrieve data from API and render poster images
-            $.getJSON('http://localhost:3000/movie', function(data) {
+            $.getJSON('/movie', function(data) {
                 var movies = data.results;
                 //Render posters of first 7 movies
                 for (var i = 0; i < 7; i++) {
