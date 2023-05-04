@@ -23,9 +23,11 @@
         </div>
        
         <script>
+
+        
             // API endpoint to retrieve top 5 rated movies
             // Function to retrieve data from API and render poster images
-            $.get('http://localhost:3000/movietrending', function(data) {
+            $.get('https://api.themoviedb.org/3/trending/all/day?api_key=2f1775072b783326efa2a8d064dfeb34', function(data) {
 			for (var i = 0; i < 5; i++) {
 				// Get the movie poster path and construct the full image URL
 				var posterPath = data.results[i].poster_path;

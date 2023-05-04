@@ -113,44 +113,47 @@
     }
 
     function searchMovies() {
-        const url = `http://localhost:3000/movies?query=${document.getElementById("search").value}`;
-        $.get(url, function(data) {
-            if (data.error) {
-                alert(data.error);
-            } else {
-                document.getElementById("poster").src = data.poster_path;
-                document.getElementById("title").innerHTML = data.title;
-                document.getElementById("overview").innerHTML = data.overview;
-                document.getElementById("release").innerHTML = data.release_date;
+    const apiUrl = `https://api.themoviedb.org/3/search/movie?api_key=2f1775072b783326efa2a8d064dfeb34&language=en-US&query=${document.getElementById("search").value}&page=1&include_adult=false`;
 
-                // Remove any existing favorite button before appending a new one
-                const existingButton = document.getElementById("favorite-button");
-                if (existingButton) {
-                    existingButton.remove();
-                }
+    $.get(apiUrl, function(data) {
+        if (data.results.length === 0) {
+            alert(`!! No movies found with name ${document.getElementById("search").value}!! `);
+        } else {
+            const movie = data.results[0]; // Get the first movie from the results
+            document.getElementById("poster").src = "https://image.tmdb.org/t/p/w500" + movie.poster_path;
+            document.getElementById("title").innerHTML = movie.title;
+            document.getElementById("overview").innerHTML = movie.overview;
+            document.getElementById("release").innerHTML = movie.release_date;
 
-                // Create a new button element
-                const favoriteButton = document.createElement("button");
-                favoriteButton.innerHTML = "Add to Favorites";
-                favoriteButton.id = "favorite-button";
-
-                // Add an event listener to the button that stores the name of the movie
-                favoriteButton.addEventListener("click", function() {
-                    const movieName = {
-                    title: data.title,
-                    release_date: data.release_date
-                };
-                    storeFavoriteMovie(movieName);
-                });
-
-                // Pass the name of the movie to the function using a data attribute
-                favoriteButton.setAttribute("data-movie-name", data.title);
-
-                // Add the button element to the page
-                document.querySelector(".poster").appendChild(favoriteButton);
+            // Remove any existing favorite button before appending a new one
+            const existingButton = document.getElementById("favorite-button");
+            if (existingButton) {
+                existingButton.remove();
             }
-        });
-    }
+
+            // Create a new button element
+            const favoriteButton = document.createElement("button");
+            favoriteButton.innerHTML = "Add to Favorites";
+            favoriteButton.id = "favorite-button";
+
+            // Add an event listener to the button that stores the name of the movie
+            favoriteButton.addEventListener("click", function() {
+                const movieName = {
+                    title: movie.title,
+                    release_date: movie.release_date
+                };
+                storeFavoriteMovie(movieName);
+            });
+
+            // Pass the name of the movie to the function using a data attribute
+            favoriteButton.setAttribute("data-movie-name", movie.title);
+
+            // Add the button element to the page
+            document.querySelector(".poster").appendChild(favoriteButton);
+        }
+    });
+}
+
 	</script>
 
 <script src="loadnavbar.js"></script>

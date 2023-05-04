@@ -1,4 +1,3 @@
-
 var admin = require("firebase-admin");
 const verifyToken = require('./middlewares/verifyToken');
 
@@ -20,7 +19,7 @@ const express = require('express');
 const app = express();
 const cors = require('cors');
 const corsOptions = {
-  origin: "https://movie-app-full-stack-1.web.app",
+  origin: ["https://movie-app-full-stack-1.web.app","http://localhost:3000"],
   methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
   allowedHeaders: [
     "Content-Type",
@@ -100,16 +99,7 @@ app.get('/movies', (req, res) => {
   });
 });
 
-/**
- * Get the list of top rated movies.
- *
- * @function GET_Method_TopRatedMovies
- * @param {Object} req - The HTTP request object.
- * @param {Object} res - The HTTP response object.
- *
- * @throws {Error} - If there's an error while fetching data from the API.
- */
-//API endpoint that retrieves the top rated movies
+
 app.get('/movie', (req, res) => {
   const Url = `https://api.themoviedb.org/3/movie/top_rated?api_key=${API_KEY}`;
     request(Url, (error, response, body) => {
