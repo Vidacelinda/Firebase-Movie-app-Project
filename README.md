@@ -1,11 +1,11 @@
-# final-project-Team-9
+# final-project-Team-Members
 * Carlo Leiva (Team Lead)
 * Anastasija Bulatovic
 * Marven Cesar
 * Thomas Wozniak
 
 
-final-project-created by GitHub Classroom
+final-project
 # Movie App
 * The Movie App is a web application that allows users to search for movies, view movie details, and manage their favorite movies. Users can log in using their Google account or sign up with an email and password. The app uses the Firebase platform for authentication and data storage. The application uses The Movie Database API to fetch movie data and Firebase Firestore to store the user's favorite movies.
 
