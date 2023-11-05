@@ -1,4 +1,4 @@
-# final-project-Team-Members
+# Project-Team-Members
 * Carlo Leiva (Team Lead)
 * Anastasija Bulatovic
 * Marven Cesar
