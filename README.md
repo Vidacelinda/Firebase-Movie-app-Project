@@ -1,8 +1,9 @@
 # final-project-Team-9
+* Carlo Leiva
 * Anastasija Bulatovic
 * Marven Cesar
 * Thomas Wozniak
-* Carlo Leiva
+
 
 final-project-created by GitHub Classroom
 # Movie App
