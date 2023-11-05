@@ -1,5 +1,5 @@
 # final-project-Team-9
-* Carlo Leiva
+* Carlo Leiva (Lead)
 * Anastasija Bulatovic
 * Marven Cesar
 * Thomas Wozniak
