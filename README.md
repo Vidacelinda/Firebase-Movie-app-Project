@@ -9,6 +9,7 @@ final-project
 # Movie App
 * The Movie App is a web application that allows users to search for movies, view movie details, and manage their favorite movies. Users can log in using their Google account or sign up with an email and password. The app uses the Firebase platform for authentication and data storage. The application uses The Movie Database API to fetch movie data and Firebase Firestore to store the user's favorite movies.
 
+<img width="732" alt="Screenshot 2023-11-18 at 9 58 16 PM" src="https://github.com/Vidacelinda/Firebase-Movie-app-Project/assets/87499194/e5ef5a7d-216d-4691-abcc-6dbf9857ba99">
 
 # Usage
 
