@@ -39,12 +39,11 @@ Movie App uses Firebase Authentication for managing user accounts. The app suppo
 ## Adding Movies to Favorites
 * To add a movie to your favorites list,  Once you have made a search to the desired movie Click on the "Add to Favorites" button to save and add the movie to your favorites list.
 
-<img width="569" alt="image" src="https://github.com/Vidacelinda/Firebase-Movie-app-Project/assets/87499194/f9c565f3-370e-4484-8ccb-b9a5cd993e2c">
-
-
 ## Viewing and Managing Favorites
 * To view your saved favorites, click on the "Favorites" link in the navigation bar at the top of the page. This will take you to the favorites page, where you can see a list of your saved movies, along with their release dates.
 * To remove a movie from your favorites list, click on the "Delete" button next to the movie title in the favorites table. The movie will be removed from your list, and the table will update to reflect the change.
+
+<img width="569" alt="image" src="https://github.com/Vidacelinda/Firebase-Movie-app-Project/assets/87499194/f9c565f3-370e-4484-8ccb-b9a5cd993e2c">
 
 
 
