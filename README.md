@@ -46,7 +46,6 @@ Movie App uses Firebase Authentication for managing user accounts. The app suppo
 * To view your saved favorites, click on the "Favorites" link in the navigation bar at the top of the page. This will take you to the favorites page, where you can see a list of your saved movies, along with their release dates.
 * To remove a movie from your favorites list, click on the "Delete" button next to the movie title in the favorites table. The movie will be removed from your list, and the table will update to reflect the change.
 
-<img width="569" alt="image" src="https://github.com/Vidacelinda/Firebase-Movie-app-Project/assets/87499194/50bb40e7-587a-4e5a-9893-dc66243c8db0">
 
 
 
